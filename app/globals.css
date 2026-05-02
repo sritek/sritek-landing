@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-dark: #121212;
+  --color-blue: #99daff;
+  --color-blue-mid: #4ab8f0;
+  --color-dark-surface: #1a1a1a;
+  --color-dark-deep: #0d0d0d;
+  --font-display: "Canela", Georgia, serif;
+  --font-body: "Avenir Next", Avenir, system-ui, sans-serif;
+  --nav-height: 72px;
+  --glow: 0 0 40px rgba(153, 218, 255, 0.15);
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--color-dark);
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: var(--color-dark);
+  color: var(--color-blue);
+  font-family: var(--font-body);
+}
+
+* {
+  border-color: rgba(153, 218, 255, 0.1);
+}
+
+::selection {
+  background: var(--color-blue);
+  color: var(--color-dark);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #121212;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #99daff;
+}
+
+.dot-grid-bg {
+  background-image: radial-gradient(
+    circle,
+    rgba(153, 218, 255, 0.1) 1px,
+    transparent 1px
+  );
+  background-size: 28px 28px;
+}
+
+.text-shadow-glow {
+  text-shadow: 0 0 80px rgba(153, 218, 255, 0.18);
+}
+
+@keyframes loading {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
