@@ -1,93 +1,109 @@
+import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { projects } from "../../../lib/data/projects";
+import Link from "next/link";
+import { projects } from "@/lib/data/projects";
+import CaseStudyClient from "./CaseStudyClient";
 
-interface Params {
-  params: {
-    slug: string;
-  };
+export function generateStaticParams() {
+  return projects.map((p) => ({ slug: p.slug }));
 }
 
-export async function generateStaticParams() {
-  return projects.map((project) => ({ slug: project.slug }));
-}
-
-export function generateMetadata({ params }: Params) {
-  const project = projects.find((item) => item.slug === params.slug);
-
-  if (!project) {
-    return {
-      title: "Project Not Found",
-    };
-  }
-
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const project = projects.find((p) => p.slug === slug);
+  if (!project) return { title: "Not Found" };
   return {
-    title: `${project.title} — SRITEK`,
-    description: project.headline,
+    title: `${project.title} — Sritek`,
+    description: project.description,
   };
 }
 
-export default function ProjectPage({ params }: Params) {
-  const project = projects.find((item) => item.slug === params.slug);
+export default async function CaseStudyPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const project = projects.find((p) => p.slug === slug);
+  if (!project) notFound();
 
-  if (!project) {
-    notFound();
-  }
+  const currentIndex = projects.findIndex((p) => p.slug === slug);
+  const nextProject = projects[(currentIndex + 1) % projects.length];
 
   return (
-    <main className="bg-dark text-blue px-6 py-20">
-      <div className="mx-auto max-w-[1280px] space-y-16">
-        <section className="space-y-6">
-          <p className="font-avenir text-xs uppercase tracking-[0.2em] text-blue-mid">
-            {project.category}
-          </p>
-          <h1 className="font-canela text-[8vw] font-light leading-none text-blue">
+    <>
+      {/* Hero */}
+      <section className="bg-dark-deep pt-32 pb-16 lg:pt-40 lg:pb-24">
+        <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
+          <span className="font-avenir text-blue-mid uppercase tracking-[0.15em] text-xs">{project.category}</span>
+          <h1
+            className="font-canela text-[8vw] text-blue font-light leading-none mt-4"
+            style={{ textShadow: "0 0 80px rgba(153,218,255,0.15)" }}
+          >
             {project.title}
           </h1>
-          <div className="flex flex-wrap gap-3">
-            <span className="rounded-full border border-[#99daff]/12 bg-[#99daff]/6 px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-[#99daff]/60">
+          <div className="flex flex-wrap gap-2 mt-6">
+            <span className="bg-blue/[0.06] border border-blue/[0.12] text-blue/60 px-3 py-1 rounded-full font-avenir text-xs">
               {project.year}
             </span>
-            {project.tech.map((tech) => (
-              <span
-                key={tech}
-                className="rounded-full border border-[#99daff]/12 bg-[#99daff]/6 px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-[#99daff]/60"
-              >
-                {tech}
+            {project.tech.map((t) => (
+              <span key={t} className="bg-blue/[0.06] border border-blue/[0.12] text-blue/60 px-3 py-1 rounded-full font-avenir text-xs">
+                {t}
               </span>
             ))}
           </div>
           <div
-            className="h-[60vh] rounded-3xl border border-[#99daff]/6"
+            className="w-full h-[40vh] lg:h-[60vh] rounded-2xl mt-10 border border-blue/[0.06]"
             style={{ backgroundColor: project.imageColor }}
           />
-        </section>
+        </div>
+      </section>
 
-        <section className="space-y-8 rounded-3xl border border-[#99daff]/10 bg-[#121212] p-10">
-          <div>
-            <p className="font-avenir text-xs uppercase tracking-[0.2em] text-blue-mid">
-              THE CHALLENGE
-            </p>
-            <h2 className="font-canela text-4xl font-light text-blue">
-              {project.challenge}
+      {/* Challenge */}
+      <section className="bg-dark py-16 lg:py-24">
+        <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
+          <p className="font-avenir text-xs tracking-[0.2em] uppercase text-blue-mid mb-6">THE CHALLENGE</p>
+          <p className="font-canela text-3xl lg:text-4xl text-blue font-light max-w-3xl leading-snug">
+            {project.challenge}
+          </p>
+        </div>
+      </section>
+
+      {/* Solution */}
+      <section className="bg-dark-deep dot-grid-bg py-16 lg:py-24">
+        <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
+          <p className="font-avenir text-xs tracking-[0.2em] uppercase text-blue-mid mb-6">OUR SOLUTION</p>
+          <p className="font-avenir text-base text-blue/55 leading-relaxed max-w-2xl mb-8">
+            {project.solution}
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {project.tech.map((t) => (
+              <span key={t} className="bg-blue/[0.06] border border-blue/[0.12] text-blue/[0.65] rounded-full px-3 py-1 font-avenir text-xs">
+                {t}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Results */}
+      <section className="bg-dark-surface py-16 lg:py-24">
+        <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
+          <p className="font-avenir text-xs tracking-[0.2em] uppercase text-blue-mid mb-12">THE RESULTS</p>
+          <CaseStudyClient results={project.results} />
+        </div>
+      </section>
+
+      {/* Next Project */}
+      <section className="bg-dark py-16 lg:py-24 text-center">
+        <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
+          <Link
+            href={`/projects/${nextProject.slug}`}
+            className="group inline-block"
+          >
+            <span className="font-avenir text-xs text-blue/40 tracking-widest uppercase">NEXT PROJECT</span>
+            <h2 className="font-canela text-4xl lg:text-5xl text-blue font-light mt-2 group-hover:text-blue-mid transition-colors">
+              {nextProject.title} →
             </h2>
-          </div>
-          <div className="space-y-4">
-            <p className="font-avenir text-sm text-[#99daff]/55 leading-relaxed">
-              {project.solution}
-            </p>
-            <div className="grid gap-4 md:grid-cols-3">
-              {project.results.map((result) => (
-                <div
-                  key={result}
-                  className="rounded-3xl border border-[#99daff]/10 bg-[#0d0d0d] p-6"
-                >
-                  <p className="font-canela text-3xl text-blue">{result}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      </div>
-    </main>
+          </Link>
+        </div>
+      </section>
+    </>
   );
 }

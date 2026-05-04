@@ -1,55 +1,52 @@
-import { ServiceCard } from "../ui/ServiceCard";
+"use client";
 
-const services = [
-  {
-    number: "01",
-    title: "AI INTEGRATION & AUTOMATION",
-    href: "/services/ai-integration",
-    description: "Automate workflows and intelligence with AI-first platforms.",
-  },
-  {
-    number: "02",
-    title: "DEDICATED DEVELOPMENT TEAM",
-    href: "/services/dedicated-team",
-    description: "Extend your engineering team with senior software experts.",
-  },
-  {
-    number: "03",
-    title: "MOBILE APP DEVELOPMENT",
-    href: "/services/mobile-apps",
-    description: "Build engaging mobile experiences for iOS and Android.",
-  },
-  {
-    number: "04",
-    title: "CREATING INTUITIVE UI/UX DESIGN",
-    href: "/services/ui-ux",
-    description: "Design elegant experiences that convert and delight users.",
-  },
-  {
-    number: "05",
-    title: "CONVERSION OPTIMISED WEBSITE",
-    href: "/services/websites",
-    description: "Launch high-converting web products with speed and polish.",
-  },
-  {
-    number: "06",
-    title: "CUSTOM WEB APP DEVELOPMENT",
-    href: "/services/web-apps",
-    description:
-      "Craft scalable, secure custom web applications for business growth.",
-  },
-];
+import { useRef } from "react";
+import { gsap, useGSAP } from "@/lib/gsap";
+import ServiceCard from "@/components/ui/ServiceCard";
+import { services } from "@/lib/data/services";
 
-export function ServicesGrid() {
+export default function ServicesGrid() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    if (!cardsRef.current) return;
+
+    gsap.from(cardsRef.current.querySelectorAll(".service-card"), {
+      scale: 0.97,
+      opacity: 0,
+      stagger: 0.06,
+      duration: 0.8,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: cardsRef.current,
+        start: "top 80%",
+      },
+    });
+  }, []);
+
   return (
-    <section className="bg-[#1a1a1a] px-6 py-20 text-blue">
-      <div className="mx-auto max-w-[1280px]">
-        <p className="font-avenir text-xs uppercase tracking-[0.2em] text-blue-mid">
+    <section ref={sectionRef} className="bg-dark-surface py-24 lg:py-32">
+      <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
+        {/* Label */}
+        <p className="font-avenir text-xs tracking-[0.2em] uppercase text-blue-mid mb-12">
           OUR SERVICES
         </p>
-        <div className="mt-12 grid gap-4 md:grid-cols-3">
+
+        {/* Grid */}
+        <div
+          ref={cardsRef}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[1px] bg-blue/[0.06]"
+        >
           {services.map((service) => (
-            <ServiceCard key={service.number} {...service} />
+            <div key={service.slug} className="service-card">
+              <ServiceCard
+                title={service.title}
+                number={service.number}
+                href={`/services/${service.slug}`}
+                description={service.description}
+              />
+            </div>
           ))}
         </div>
       </div>

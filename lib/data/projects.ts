@@ -1,19 +1,6 @@
-export interface Project {
-  slug: string;
-  category: string;
-  title: string;
-  headline: string;
-  description: string;
-  challenge: string;
-  solution: string;
-  results: string[];
-  tech: string[];
-  year: string;
-  imageColor: string;
-  featured: boolean;
-}
+import { ProjectItem } from "@/lib/types";
 
-export const projects: Project[] = [
+export const projects: ProjectItem[] = [
   {
     slug: "ai-survey-platform",
     category: "Digital Market Research",
@@ -54,6 +41,27 @@ export const projects: Project[] = [
     tech: ["React Native", "Python", "TensorFlow", "FastAPI", "GCP"],
     year: "2025",
     imageColor: "#0a1825",
+    featured: true,
+  },
+  {
+    slug: "saas-dashboard",
+    category: "SaaS",
+    title: "Real-Time Analytics Dashboard",
+    headline: "Live Data, Instant Decisions",
+    description:
+      "A real-time analytics dashboard that processes millions of events per day with sub-second query performance.",
+    challenge:
+      "Legacy analytics tools couldn't handle real-time data at scale, causing hours of delay in business-critical decisions.",
+    solution:
+      "Built a streaming data pipeline with real-time visualization, custom alerting, and collaborative annotation features.",
+    results: [
+      "Processing 2M+ events/day",
+      "Sub-200ms query latency",
+      "60% reduction in decision lag",
+    ],
+    tech: ["Next.js", "Apache Kafka", "ClickHouse", "WebSocket", "AWS"],
+    year: "2024",
+    imageColor: "#0f1a12",
     featured: true,
   },
 ];

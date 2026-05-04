@@ -1,6 +1,11 @@
-import { CTA } from "../ui/CTA";
+"use client";
 
-const clients = [
+import { useRef } from "react";
+import { gsap, useGSAP } from "@/lib/gsap";
+import CTA from "@/components/ui/CTA";
+import type { ClientItem } from "@/lib/types";
+
+const clients: ClientItem[] = [
   { name: "ZEPHYR", service: "Web Development & UI/UX Design" },
   { name: "AXIOM", service: "Custom SaaS Platform" },
   { name: "NODEX", service: "AI Integration & Automation" },
@@ -13,32 +18,82 @@ const clients = [
   { name: "VELOX", service: "Web Development & UI/UX Design" },
 ];
 
-export function ClientList() {
-  return (
-    <section className="relative overflow-hidden bg-[#0d0d0d] px-6 py-20 text-blue">
-      <div className="dot-grid-bg absolute inset-0 opacity-15" />
-      <div className="relative mx-auto grid max-w-[1280px] gap-12 lg:grid-cols-[35%_65%]">
-        <div className="sticky top-28 space-y-8 self-start">
-          <h2 className="font-canela text-5xl font-light leading-tight">
-            TRUSTED BY INDIA&apos;S FASTEST GROWING COMPANIES
-          </h2>
-          <CTA label="LEARN MORE" variant="outline" />
-        </div>
+export default function ClientList() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const headingRef = useRef<HTMLDivElement>(null);
+  const rowsRef = useRef<HTMLDivElement>(null);
 
-        <div className="space-y-4">
-          {clients.map((client) => (
-            <div
-              key={client.name}
-              className="group rounded-[18px] border border-[#99daff]/10 bg-[#121212] px-6 py-5 transition hover:bg-[#99daff]/10"
-            >
-              <div className="flex items-center justify-between gap-4">
-                <p className="font-canela text-xl text-blue">{client.name}</p>
-                <p className="font-avenir text-xs uppercase tracking-[0.2em] text-[#99daff]/30">
-                  {client.service}
-                </p>
-              </div>
+  useGSAP(() => {
+    if (!headingRef.current || !rowsRef.current) return;
+
+    // Heading word reveal
+    gsap.from(headingRef.current.querySelectorAll(".word"), {
+      y: 40,
+      opacity: 0,
+      stagger: 0.06,
+      duration: 0.8,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: headingRef.current,
+        start: "top 80%",
+      },
+    });
+
+    // Rows stagger in
+    gsap.from(rowsRef.current.querySelectorAll(".client-row"), {
+      y: 20,
+      opacity: 0,
+      stagger: 0.04,
+      duration: 0.6,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: rowsRef.current,
+        start: "top 80%",
+      },
+    });
+  }, []);
+
+  const headingWords = "TRUSTED BY INDIA'S FASTEST GROWING COMPANIES".split(" ");
+
+  return (
+    <section ref={sectionRef} className="bg-dark-deep dot-grid-bg py-24 lg:py-32">
+      <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
+          {/* Left Column - Sticky */}
+          <div className="lg:w-[35%] lg:sticky lg:top-24 lg:self-start">
+            <div ref={headingRef}>
+              <h2 className="font-canela text-4xl lg:text-5xl font-light text-blue leading-tight">
+                {headingWords.map((word, i) => (
+                  <span key={i} className="word inline-block mr-[0.3em]">
+                    {word}
+                  </span>
+                ))}
+              </h2>
             </div>
-          ))}
+            <div className="mt-8">
+              <CTA variant="outline" label="WORK WITH US" />
+            </div>
+          </div>
+
+          {/* Right Column - Client Rows */}
+          <div ref={rowsRef} className="lg:w-[65%]">
+            {clients.map((client, i) => (
+              <div
+                key={client.name}
+                className="client-row group flex items-center py-5 border-b border-blue/[0.07] hover:bg-blue/[0.03] transition-colors cursor-pointer px-2"
+              >
+                <span className="text-blue-mid mr-4 transition-transform duration-300 group-hover:translate-x-2">
+                  →
+                </span>
+                <span className="font-canela text-xl text-blue font-light flex-1">
+                  {client.name}
+                </span>
+                <span className="font-avenir text-xs text-blue/30 hidden sm:block">
+                  {client.service}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

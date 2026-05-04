@@ -1,26 +1,25 @@
-import Link from "next/link";
-import { CTA } from "../components/ui/CTA";
+import CTA from "@/components/ui/CTA";
 
 export default function NotFound() {
   return (
-    <main className="flex min-h-screen items-center justify-center bg-dark px-6 text-blue">
-      <div className="space-y-10 text-center">
-        <p className="font-canela text-[20vw] font-light leading-none text-[#99daff]/10">
-          404
-        </p>
-        <p className="text-sm uppercase tracking-[0.25em] text-[#99daff]/28">
+    <section className="min-h-screen bg-dark flex flex-col items-center justify-center relative overflow-hidden">
+      {/* Giant 404 watermark */}
+      <div
+        className="font-canela text-[20vw] text-blue/[0.05] font-light leading-none select-none absolute"
+        style={{
+          background: "radial-gradient(circle, rgba(153,218,255,0.06) 0%, transparent 60%)",
+          WebkitBackgroundClip: "text",
+        }}
+      >
+        404
+      </div>
+
+      <div className="relative z-10 text-center">
+        <p className="font-avenir text-blue/[0.28] text-sm tracking-[0.2em] uppercase mb-8">
           PAGE NOT FOUND
         </p>
-        <div className="space-y-6">
-          <p className="max-w-xl text-[#99daff]/55">
-            The page you are looking for does not exist. Head back home to
-            explore our services and projects.
-          </p>
-          <div className="mx-auto w-fit">
-            <CTA href="/" label="GO HOME" />
-          </div>
-        </div>
+        <CTA label="GO HOME" href="/" />
       </div>
-    </main>
+    </section>
   );
 }

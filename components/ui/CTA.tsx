@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { MouseEvent } from "react";
+import { useRef } from "react";
 
 interface CTAProps {
   label?: string;
@@ -21,14 +21,14 @@ const sizeClasses = {
 
 const variantClasses = {
   solid:
-    "bg-blue text-[#121212] hover:bg-blue-mid shadow-[0_0_30px_rgba(153,218,255,0.3)]",
+    "bg-blue text-dark hover:bg-blue-mid hover:shadow-[0_0_30px_rgba(153,218,255,0.3)]",
   outline:
-    "border border-[#99daff]/35 bg-transparent text-blue hover:border-blue hover:bg-[rgba(153,218,255,0.06)] shadow-[0_0_20px_rgba(153,218,255,0.1)]",
+    "border border-blue/35 text-blue hover:border-blue hover:bg-blue/[0.06] hover:shadow-[0_0_20px_rgba(153,218,255,0.1)]",
   ghost:
-    "bg-transparent text-[#99daff]/55 underline underline-offset-4 hover:text-blue",
+    "text-blue/55 underline underline-offset-4 hover:text-blue",
 };
 
-export function CTA({
+export default function CTA({
   label = "GET IN TOUCH",
   href = "/contact",
   variant = "solid",
@@ -37,26 +37,53 @@ export function CTA({
   onClick,
   external = false,
 }: CTAProps) {
-  const classes = `inline-flex items-center justify-center rounded-none font-avenir font-semibold uppercase tracking-widest transition-all duration-300 ${sizeClasses[size]} ${variantClasses[variant]} ${className}`;
+  const btnRef = useRef<HTMLAnchorElement | HTMLButtonElement>(null);
 
-  if (href && !external) {
+  const baseClasses = `
+    inline-block font-avenir font-semibold uppercase tracking-[0.15em]
+    transition-all duration-300 relative overflow-hidden
+    ${sizeClasses[size]}
+    ${variantClasses[variant]}
+    ${className}
+  `.trim();
+
+  const handleClick = (e: React.MouseEvent) => {
+    // Click spring animation
+    const el = btnRef.current;
+    if (el) {
+      el.style.transform = "scale(0.97)";
+      setTimeout(() => {
+        el.style.transform = "scale(1)";
+      }, 150);
+    }
+    onClick?.();
+  };
+
+  if (onClick && !href) {
     return (
-      <Link href={href} className={classes} onClick={onClick}>
+      <button
+        ref={btnRef as React.RefObject<HTMLButtonElement>}
+        onClick={handleClick}
+        className={baseClasses}
+      >
         {label}
-      </Link>
+      </button>
     );
   }
 
+  const linkProps = external
+    ? { target: "_blank", rel: "noopener noreferrer" }
+    : {};
+
   return (
-    <a
+    <Link
+      ref={btnRef as React.RefObject<HTMLAnchorElement>}
       href={href}
-      className={classes}
-      onClick={(event: MouseEvent<HTMLAnchorElement>) => {
-        onClick?.();
-        if (!href) event.preventDefault();
-      }}
+      onClick={handleClick}
+      className={baseClasses}
+      {...linkProps}
     >
       {label}
-    </a>
+    </Link>
   );
 }

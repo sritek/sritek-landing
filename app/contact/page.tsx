@@ -1,37 +1,25 @@
-import { CTA } from "../../components/ui/CTA";
+import { Metadata } from "next";
+import ContactForm from "./ContactForm";
+
+export const metadata: Metadata = {
+  title: "Contact — Sritek",
+  description: "Get in touch with Sritek. Tell us about your project and let's build something powerful together.",
+};
 
 export default function ContactPage() {
   return (
-    <main className="bg-dark text-blue px-6 py-20">
-      <section className="relative mx-auto max-w-[900px] rounded-3xl border border-[#99daff]/8 bg-[#121212] px-8 py-16">
-        <div className="dot-grid-bg absolute inset-0 opacity-10" />
-        <div className="relative space-y-10">
-          <h1 className="font-canela text-[7vw] leading-none text-blue">
-            LET'S BUILD SOMETHING
-          </h1>
-          <form className="space-y-6">
-            {["Name", "Email", "Company", "Message"].map((label) => (
-              <label key={label} className="block text-sm text-[#99daff]/60">
-                <span className="mb-2 block">{label}</span>
-                {label === "Message" ? (
-                  <textarea
-                    rows={5}
-                    className="w-full border border-[#99daff]/8 bg-[#0d0d0d] px-4 py-3 text-[#99daff] outline-none focus:border-blue-mid focus:shadow-[0_0_20px_rgba(153,218,255,0.07)]"
-                  />
-                ) : (
-                  <input
-                    type={label === "Email" ? "email" : "text"}
-                    className="w-full border border-[#99daff]/8 bg-[#0d0d0d] px-4 py-3 text-[#99daff] outline-none focus:border-blue-mid focus:shadow-[0_0_20px_rgba(153,218,255,0.07)]"
-                  />
-                )}
-              </label>
-            ))}
-            <div className="pt-4">
-              <CTA size="lg" label="SEND MESSAGE" />
-            </div>
-          </form>
+    <section className="bg-dark dot-grid-bg min-h-screen pt-32 pb-24 lg:pt-40 lg:pb-32">
+      <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
+        <h1
+          className="font-canela text-[7vw] text-blue font-light leading-none mb-12"
+          style={{ textShadow: "0 0 80px rgba(153,218,255,0.15)" }}
+        >
+          LET&apos;S BUILD SOMETHING
+        </h1>
+        <div className="max-w-2xl">
+          <ContactForm />
         </div>
-      </section>
-    </main>
+      </div>
+    </section>
   );
 }

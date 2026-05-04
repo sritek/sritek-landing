@@ -1,34 +1,125 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
+/* ═══════════════════════════════════════════════════════════
+   SRITEK — Design System (Tailwind v4)
+   Dark Tech · Electric Blueprint · Premium Digital Agency
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Font Faces ── */
+@font-face {
+  font-family: 'Canela';
+  src: url('/fonts/Canela-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Canela';
+  src: url('/fonts/Canela-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Avenir Next';
+  src: url('/fonts/AvenirNext-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Avenir Next';
+  src: url('/fonts/AvenirNext-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Avenir Next';
+  src: url('/fonts/AvenirNext-DemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Avenir Next';
+  src: url('/fonts/AvenirNext-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Tailwind v4 Theme ── */
+@theme {
+  /* Colors */
+  --color-dark: #121212;
+  --color-dark-surface: #1a1a1a;
+  --color-dark-deep: #0d0d0d;
+  --color-dark-border: rgba(153, 218, 255, 0.1);
+  --color-blue: #99daff;
+  --color-blue-mid: #4ab8f0;
+  --color-blue-muted: rgba(153, 218, 255, 0.5);
+  --color-blue-faint: rgba(153, 218, 255, 0.08);
+
+  /* Fonts */
+  --font-canela: 'Canela', Georgia, serif;
+  --font-avenir: 'Avenir Next', Avenir, system-ui, sans-serif;
+
+  /* Animations */
+  --animate-marquee: marquee 22s linear infinite;
+  --animate-fade-up: fadeUp 0.7s ease forwards;
+  --animate-glow-pulse: glowPulse 3s ease-in-out infinite;
+
+  @keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+  }
+
+  @keyframes fadeUp {
+    0% { opacity: 0; transform: translateY(40px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes revealMask {
+    0% { clip-path: inset(0 100% 0 0); }
+    100% { clip-path: inset(0 0% 0 0); }
+  }
+
+  @keyframes glowPulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(153, 218, 255, 0.1); }
+    50% { box-shadow: 0 0 40px rgba(153, 218, 255, 0.25); }
+  }
+}
+
+/* ── CSS Custom Properties ── */
 :root {
   --color-dark: #121212;
   --color-blue: #99daff;
   --color-blue-mid: #4ab8f0;
   --color-dark-surface: #1a1a1a;
   --color-dark-deep: #0d0d0d;
-  --font-display: "Canela", Georgia, serif;
-  --font-body: "Avenir Next", Avenir, system-ui, sans-serif;
+  --font-display: 'Canela', Georgia, serif;
+  --font-body: 'Avenir Next', Avenir, system-ui, sans-serif;
   --nav-height: 72px;
   --glow: 0 0 40px rgba(153, 218, 255, 0.15);
 }
 
+/* ── Base Styles ── */
 html {
   scroll-behavior: smooth;
-  background: var(--color-dark);
 }
 
 body {
-  min-height: 100vh;
-  margin: 0;
   background: var(--color-dark);
   color: var(--color-blue);
   font-family: var(--font-body);
-}
-
-* {
-  border-color: rgba(153, 218, 255, 0.1);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
@@ -36,8 +127,9 @@ body {
   color: var(--color-dark);
 }
 
+/* ── Scrollbar ── */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -46,31 +138,58 @@ body {
 
 ::-webkit-scrollbar-thumb {
   background: #99daff;
+  border-radius: 3px;
 }
 
+::-webkit-scrollbar-thumb:hover {
+  background: #4ab8f0;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #99daff #121212;
+}
+
+/* ── Default Border Color ── */
+*,
+*::before,
+*::after {
+  border-color: rgba(153, 218, 255, 0.1);
+}
+
+/* ── Utility Classes ── */
 .dot-grid-bg {
-  background-image: radial-gradient(
-    circle,
-    rgba(153, 218, 255, 0.1) 1px,
-    transparent 1px
-  );
+  background-image: radial-gradient(circle, rgba(153, 218, 255, 0.1) 1px, transparent 1px);
   background-size: 28px 28px;
 }
 
-.text-shadow-glow {
-  text-shadow: 0 0 80px rgba(153, 218, 255, 0.18);
+.dot-grid-bg-lg {
+  background-image: radial-gradient(circle, rgba(153, 218, 255, 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
 
-@keyframes loading {
-  0% {
-    width: 0;
-  }
-  100% {
-    width: 100%;
-  }
+.text-balance {
+  text-wrap: balance;
 }
 
-img {
-  max-width: 100%;
-  display: block;
+.glow-blue {
+  box-shadow: 0 0 30px rgba(153, 218, 255, 0.2);
+}
+
+.glow-blue-text {
+  text-shadow: 0 0 60px rgba(153, 218, 255, 0.25);
+}
+
+.glow-blue-strong {
+  box-shadow: 0 0 30px rgba(153, 218, 255, 0.3);
+}
+
+/* ── Font Utilities ── */
+.font-canela {
+  font-family: var(--font-display);
+}
+
+.font-avenir {
+  font-family: var(--font-body);
 }

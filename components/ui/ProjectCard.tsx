@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 
 interface ProjectCardProps {
@@ -6,44 +8,40 @@ interface ProjectCardProps {
   description: string;
   href: string;
   imagePlaceholderColor?: string;
-  fullWidth?: boolean;
 }
 
-export function ProjectCard({
+export default function ProjectCard({
   category,
   title,
   description,
   href,
-  imagePlaceholderColor = "#111827",
-  fullWidth = false,
+  imagePlaceholderColor = "#0c1520",
 }: ProjectCardProps) {
   return (
-    <article
-      className={`group relative overflow-hidden rounded-3xl border border-[#99daff]/7 bg-[#121212] p-8 ${fullWidth ? "lg:col-span-2" : ""}`}
+    <Link
+      href={href}
+      className="group block bg-dark border border-blue/[0.07] rounded-2xl overflow-hidden p-8 transition-all duration-500 hover:border-blue/[0.22] hover:shadow-[0_0_40px_rgba(153,218,255,0.05)]"
     >
-      <div className="flex flex-col gap-6 lg:flex-row lg:items-start">
-        <div className="space-y-4">
-          <p className="font-avenir text-xs tracking-widest uppercase text-blue-mid">
+      <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
+        <div className="flex-1">
+          <span className="font-avenir text-xs tracking-[0.15em] uppercase text-blue-mid">
             {category}
-          </p>
-          <h3 className="font-canela text-3xl font-light leading-tight text-blue">
+          </span>
+          <h3 className="font-canela text-2xl lg:text-3xl text-blue font-light mt-2 leading-tight">
             {title}
           </h3>
-          <p className="max-w-xl font-avenir text-sm text-[#99daff]/38 leading-relaxed">
+          <p className="font-avenir text-sm text-blue/[0.38] leading-relaxed mt-3">
             {description}
           </p>
-          <Link
-            href={href}
-            className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-blue transition group-hover:translate-x-1"
-          >
-            View case study <span>→</span>
-          </Link>
+          <span className="inline-block mt-4 text-blue opacity-0 group-hover:opacity-100 transform translate-x-[-8px] group-hover:translate-x-0 transition-all duration-500">
+            →
+          </span>
         </div>
         <div
-          className="h-48 max-w-[320px] flex-1 rounded-3xl border border-[#99daff]/8"
+          className="w-full lg:w-48 h-48 lg:h-auto rounded-xl flex-shrink-0"
           style={{ backgroundColor: imagePlaceholderColor }}
         />
       </div>
-    </article>
+    </Link>
   );
 }
