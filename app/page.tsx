@@ -1,30 +1,32 @@
-import Hero from "@/components/sections/Hero";
-import MarqueeRow from "@/components/animations/MarqueeRow";
-import ClientList from "@/components/sections/ClientList";
+import type { Metadata } from "next";
+import HeroSection from "@/components/sections/HeroSection";
+import TrustedBy from "@/components/sections/TrustedBy";
 import ServicesGrid from "@/components/sections/ServicesGrid";
 import ProcessSection from "@/components/sections/ProcessSection";
 import WhoWeAre from "@/components/sections/WhoWeAre";
 import OurWork from "@/components/sections/OurWork";
-import Reviews from "@/components/sections/Reviews";
+import TestimonialCarousel from "@/components/sections/TestimonialCarousel";
 import CTABanner from "@/components/sections/CTABanner";
+import Footer from "@/components/layout/Footer";
+import PageProgress from "@/components/ui/PageProgress";
 
-const techStack = [
-  "NEXT.JS", "REACT", "TYPESCRIPT", "NODE.JS", "POSTGRESQL",
-  "GSAP", "TAILWIND", "PRISMA", "AWS", "OPENAI",
-];
+export const metadata: Metadata = {
+  title: "Home"
+};
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <>
-      <Hero />
-      <MarqueeRow items={techStack} />
-      <ClientList />
+    <main>
+      <HeroSection />
+      <TrustedBy />
       <ServicesGrid />
       <ProcessSection />
       <WhoWeAre />
       <OurWork />
-      <Reviews />
+      <TestimonialCarousel />
       <CTABanner />
-    </>
+      <Footer />
+      <PageProgress />
+    </main>
   );
 }

@@ -1,104 +1,77 @@
-import { Metadata } from "next";
-import TeamCard from "@/components/ui/TeamCard";
+import type { Metadata } from "next";
+import Footer from "@/components/layout/Footer";
 import CTABanner from "@/components/sections/CTABanner";
-import AboutClient from "./AboutClient";
-import { team } from "@/lib/data/team";
 
 export const metadata: Metadata = {
-  title: "About — Sritek",
-  description: "Meet the team behind Sritek. Developers, designers, and project managers turning business challenges into technological successes.",
+  title: "About"
 };
 
 const milestones = [
-  { num: "01", title: "FOUNDATION", desc: "Founded with a vision to turn business challenges into technological successes." },
-  { num: "02", title: "INITIAL GROWTH", desc: "Shipped our first SaaS MVP in weeks, not months. Trust built the company." },
-  { num: "03", title: "FROM LOCAL TO GLOBAL", desc: "Partnered with startups and enterprises across India, EU, and US." },
-];
-
-const pillars = [
-  { title: "EMBRACING IDEAS AND INNOVATION", desc: "We see every problem as an opportunity for creative engineering solutions." },
-  { title: "DRIVEN FOR EXCELLENCE", desc: "Code quality, performance, and user experience are non-negotiable standards." },
-  { title: "DEDICATED TO SUCCESS", desc: "Your success is our metric. We measure outcomes, not just outputs." },
-  { title: "HONESTY AND CLARITY", desc: "Transparent communication and realistic timelines build lasting partnerships." },
+  { no: "01", title: "Foundation", body: "Sritek started in Jaipur with a focus on quality software delivery." },
+  { no: "02", title: "Initial Growth", body: "Expanded into SaaS, mobile apps, and UI/UX projects." },
+  { no: "03", title: "From Local to Global", body: "Now partnering with startups across regions." }
 ];
 
 export default function AboutPage() {
   return (
-    <>
-      {/* Hero */}
-      <section className="bg-dark dot-grid-bg pt-32 pb-16 lg:pt-40 lg:pb-24">
-        <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
-          <AboutClient />
-          <div className="bg-dark-surface border border-blue/[0.07] rounded-2xl w-full h-[40vh] lg:h-[60vh] mt-8 flex items-center justify-center">
-            <span className="font-avenir text-xs text-blue/[0.12] tracking-widest uppercase">TEAM PHOTO</span>
-          </div>
+    <main className="pt-[72px]">
+      <section className="bg-[#6600FF] section-padding">
+        <div className="section-container">
+          <h1 className="font-display text-[clamp(4rem,10vw,9rem)] font-extrabold text-white">THE TEAM BEHIND YOUR SOFTWARE</h1>
         </div>
       </section>
-
-      {/* Description */}
-      <section className="bg-dark py-16 lg:py-24">
-        <div className="max-w-[1440px] mx-auto px-6 lg:px-12 flex flex-col lg:flex-row">
-          <div className="lg:w-1/2" />
-          <div className="lg:w-1/2">
-            <p className="font-avenir text-base text-blue/[0.52] leading-relaxed max-w-lg">
-              Our talented team of developers, UI/UX designers, and project managers is passionate about turning your business needs into efficient, scalable software solutions. Based in India, we specialize in web and mobile apps, SaaS platforms, and AI automation.
-            </p>
-          </div>
-        </div>
+      <section className="bg-[#6600FF] px-6 pb-20">
+        <div className="section-container h-80 rounded-2xl bg-gray-700" />
       </section>
-
-      {/* Milestones */}
-      <section className="bg-dark-deep dot-grid-bg py-24 lg:py-32">
-        <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
-          <p className="font-avenir text-xs tracking-[0.2em] uppercase text-blue/[0.22] mb-16">
-            OUR JOURNEY: KEY MILESTONES
-          </p>
-          <div className="relative">
-            <div className="absolute top-1/2 left-0 right-0 h-[1px] bg-blue/[0.15] hidden lg:block" />
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-8">
-              {milestones.map((m) => (
-                <div key={m.num} className="relative text-center lg:text-left">
-                  <div className="hidden lg:flex items-center justify-center mb-6">
-                    <div className="w-1.5 h-1.5 rounded-full bg-blue-mid shadow-[0_0_10px_rgba(74,184,240,0.5)]" />
-                  </div>
-                  <span className="font-canela text-[8vw] lg:text-[4vw] text-blue/[0.06] font-light leading-none">{m.num}</span>
-                  <h3 className="font-canela text-2xl lg:text-3xl text-blue mt-2">{m.title}</h3>
-                  <p className="font-avenir text-sm text-blue/[0.38] leading-relaxed mt-3">{m.desc}</p>
-                </div>
-              ))}
+      <section className="bg-[#6600FF] py-20">
+        <p className="section-container ml-auto max-w-2xl text-xl leading-relaxed text-white">
+          Our talented team of developers, UI/UX designers, and project managers is passionate about turning your business needs into efficient software.
+        </p>
+      </section>
+      <section className="bg-[#0D0D1F] section-padding">
+        <div className="section-container grid gap-8 md:grid-cols-3">
+          {milestones.map((m) => (
+            <div key={m.no}>
+              <p className="font-display text-8xl font-extrabold text-[#4DFF7C]">{m.no}</p>
+              <div className="my-4 h-px w-full bg-[#4DFF7C]" />
+              <h3 className="text-2xl font-semibold text-white">{m.title}</h3>
+              <p className="mt-2 text-white/70">{m.body}</p>
             </div>
-          </div>
+          ))}
         </div>
       </section>
-
-      {/* Pillars */}
-      <section className="bg-dark-surface py-24 lg:py-32">
-        <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
-          <p className="font-avenir text-xs tracking-[0.2em] uppercase text-blue-mid mb-12">THE PILLARS OF SRITEK</p>
-          <div className="divide-y divide-blue/[0.07]">
-            {pillars.map((p) => (
-              <div key={p.title} className="flex flex-col lg:flex-row lg:items-center py-8 gap-4 lg:gap-16">
-                <h3 className="font-canela text-3xl lg:text-4xl text-blue font-light lg:w-1/2">{p.title}</h3>
-                <p className="font-avenir text-sm text-blue/[0.42] lg:w-1/2">{p.desc}</p>
-              </div>
+      <section className="bg-[#6600FF] section-padding">
+        <div className="section-container space-y-6">
+          {["Embracing Ideas and Innovation", "Driven for Excellence", "Dedicated to Success", "Honesty and Clarity"].map((p) => (
+            <div key={p} className="flex flex-col justify-between border-b border-white/20 py-8 md:flex-row">
+              <h3 className="font-display text-5xl font-extrabold text-white">{p}</h3>
+              <p className="max-w-md text-white/80">We combine practical execution with ambitious thinking to deliver outcomes.</p>
+            </div>
+          ))}
+        </div>
+      </section>
+      <section className="bg-[#0D0D1F] section-padding">
+        <div className="section-container">
+          <h2 className="mb-12 font-display text-7xl font-extrabold text-[#4DFF7C]">THE TEAM</h2>
+          <div className="grid gap-6 md:grid-cols-3">
+            {[
+              { name: "Founder", role: "CEO & Founder" },
+              { name: "CTO", role: "Tech Lead" },
+              { name: "Project Manager", role: "Delivery" }
+            ].map((m) => (
+              <article key={m.name} className="overflow-hidden rounded-2xl">
+                <div className="h-56 bg-gray-700" />
+                <div className="bg-white p-6">
+                  <h4 className="text-lg font-medium text-[#0D0D1F]">{m.name}</h4>
+                  <p className="text-xs uppercase tracking-widest text-[#6600FF]">{m.role}</p>
+                </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
-
-      {/* Team */}
-      <section className="bg-dark py-24 lg:py-32">
-        <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
-          <h2 className="font-canela text-5xl lg:text-6xl text-blue font-light mb-12">THE TEAM</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {team.map((m) => (
-              <TeamCard key={m.name} name={m.name} role={m.role} />
-            ))}
-          </div>
-        </div>
-      </section>
-
       <CTABanner />
-    </>
+      <Footer />
+    </main>
   );
 }

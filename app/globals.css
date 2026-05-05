@@ -1,54 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
 @import "tailwindcss";
 
-/* ═══════════════════════════════════════════════════════════
+/* ═══════════════════════════════════════════════════════════════════
    SRITEK — Design System (Tailwind v4)
    Dark Tech · Electric Blueprint · Premium Digital Agency
-   ═══════════════════════════════════════════════════════════ */
+   ═══════════════════════════════════════════════════ */
 
 /* ── Font Faces ── */
 @font-face {
-  font-family: 'Canela';
-  src: url('/fonts/Canela-Light.woff2') format('woff2');
+  font-family: "Canela";
+  src: url("/fonts/Canela-Light.woff2") format("woff2");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Canela';
-  src: url('/fonts/Canela-Regular.woff2') format('woff2');
+  font-family: "Canela";
+  src: url("/fonts/Canela-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Avenir Next';
-  src: url('/fonts/AvenirNext-Regular.woff2') format('woff2');
+  font-family: "Avenir Next";
+  src: url("/fonts/AvenirNext-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Avenir Next';
-  src: url('/fonts/AvenirNext-Medium.woff2') format('woff2');
+  font-family: "Avenir Next";
+  src: url("/fonts/AvenirNext-Medium.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Avenir Next';
-  src: url('/fonts/AvenirNext-DemiBold.woff2') format('woff2');
+  font-family: "Avenir Next";
+  src: url("/fonts/AvenirNext-DemiBold.woff2") format("woff2");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Avenir Next';
-  src: url('/fonts/AvenirNext-Bold.woff2') format('woff2');
+  font-family: "Avenir Next";
+  src: url("/fonts/AvenirNext-Bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -67,8 +68,9 @@
   --color-blue-faint: rgba(153, 218, 255, 0.08);
 
   /* Fonts */
-  --font-canela: 'Canela', Georgia, serif;
-  --font-avenir: 'Avenir Next', Avenir, system-ui, sans-serif;
+  --font-canela: "Canela", Georgia, serif;
+  --font-avenir: "Avenir Next", Avenir, system-ui, sans-serif;
+  --font-hero: "Anton", sans-serif;
 
   /* Animations */
   --animate-marquee: marquee 22s linear infinite;
@@ -76,23 +78,42 @@
   --animate-glow-pulse: glowPulse 3s ease-in-out infinite;
 
   @keyframes marquee {
-    0% { transform: translateX(0%); }
-    100% { transform: translateX(-50%); }
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
   }
 
   @keyframes fadeUp {
-    0% { opacity: 0; transform: translateY(40px); }
-    100% { opacity: 1; transform: translateY(0); }
+    0% {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   @keyframes revealMask {
-    0% { clip-path: inset(0 100% 0 0); }
-    100% { clip-path: inset(0 0% 0 0); }
+    0% {
+      clip-path: inset(0 100% 0 0);
+    }
+    100% {
+      clip-path: inset(0 0% 0 0);
+    }
   }
 
   @keyframes glowPulse {
-    0%, 100% { box-shadow: 0 0 20px rgba(153, 218, 255, 0.1); }
-    50% { box-shadow: 0 0 40px rgba(153, 218, 255, 0.25); }
+    0%,
+    100% {
+      box-shadow: 0 0 20px rgba(153, 218, 255, 0.1);
+    }
+    50% {
+      box-shadow: 0 0 40px rgba(153, 218, 255, 0.25);
+    }
   }
 }
 
@@ -103,8 +124,8 @@
   --color-blue-mid: #4ab8f0;
   --color-dark-surface: #1a1a1a;
   --color-dark-deep: #0d0d0d;
-  --font-display: 'Canela', Georgia, serif;
-  --font-body: 'Avenir Next', Avenir, system-ui, sans-serif;
+  --font-display: "Canela", Georgia, serif;
+  --font-body: "Avenir Next", Avenir, system-ui, sans-serif;
   --nav-height: 72px;
   --glow: 0 0 40px rgba(153, 218, 255, 0.15);
 }
@@ -160,12 +181,20 @@ body {
 
 /* ── Utility Classes ── */
 .dot-grid-bg {
-  background-image: radial-gradient(circle, rgba(153, 218, 255, 0.1) 1px, transparent 1px);
+  background-image: radial-gradient(
+    circle,
+    rgba(153, 218, 255, 0.1) 1px,
+    transparent 1px
+  );
   background-size: 28px 28px;
 }
 
 .dot-grid-bg-lg {
-  background-image: radial-gradient(circle, rgba(153, 218, 255, 0.1) 1px, transparent 1px);
+  background-image: radial-gradient(
+    circle,
+    rgba(153, 218, 255, 0.1) 1px,
+    transparent 1px
+  );
   background-size: 40px 40px;
 }
 
@@ -192,4 +221,8 @@ body {
 
 .font-avenir {
   font-family: var(--font-body);
+}
+
+.font-anton {
+  font-family: var(--font-hero);
 }

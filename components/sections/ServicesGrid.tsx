@@ -1,54 +1,16 @@
-"use client";
-
-import { useRef } from "react";
-import { gsap, useGSAP } from "@/lib/gsap";
-import ServiceCard from "@/components/ui/ServiceCard";
 import { services } from "@/lib/data/services";
 
 export default function ServicesGrid() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const cardsRef = useRef<HTMLDivElement>(null);
-
-  useGSAP(() => {
-    if (!cardsRef.current) return;
-
-    gsap.from(cardsRef.current.querySelectorAll(".service-card"), {
-      scale: 0.97,
-      opacity: 0,
-      stagger: 0.06,
-      duration: 0.8,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: cardsRef.current,
-        start: "top 80%",
-      },
-    });
-  }, []);
-
   return (
-    <section ref={sectionRef} className="bg-dark-surface py-24 lg:py-32">
-      <div className="max-w-[1440px] mx-auto px-6 lg:px-12">
-        {/* Label */}
-        <p className="font-avenir text-xs tracking-[0.2em] uppercase text-blue-mid mb-12">
-          OUR SERVICES
-        </p>
-
-        {/* Grid */}
-        <div
-          ref={cardsRef}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[1px] bg-blue/[0.06]"
-        >
-          {services.map((service) => (
-            <div key={service.slug} className="service-card">
-              <ServiceCard
-                title={service.title}
-                number={service.number}
-                href={`/services/${service.slug}`}
-                description={service.description}
-              />
-            </div>
-          ))}
-        </div>
+    <section className="bg-[#6600FF] section-padding">
+      <div className="section-container grid grid-cols-1 gap-4 md:grid-cols-3">
+        {services.map((service) => (
+          <article key={service.id} className="group relative cursor-pointer overflow-hidden rounded-2xl border-2 border-transparent bg-white p-8 transition-all duration-200 hover:scale-[1.02] hover:border-black">
+            <p className="mb-4 text-xs font-medium uppercase tracking-widest text-[#6600FF]">Service / {service.id}</p>
+            <h3 className="whitespace-pre-line font-display text-6xl font-extrabold leading-none text-[#0D0D1F]">{service.title}</h3>
+            <span className="absolute right-6 top-6 inline-flex h-10 w-10 items-center justify-center rounded-sm bg-[#4DFF7C] opacity-0 transition group-hover:opacity-100">→</span>
+          </article>
+        ))}
       </div>
     </section>
   );

@@ -1,29 +1,22 @@
-import { Testimonial } from "@/lib/types";
-
-export const testimonials: Testimonial[] = [
+export const testimonials = [
   {
     quote:
-      "The ability to adapt in a rapidly changing environment and close communication makes Sritek a strong software development partner.",
-    client: "AXIOM LABS",
+      "Working with Sritek has been transformative. Their team delivered our SaaS MVP in 6 weeks with exceptional quality.",
+    company: "TECHSTARS JAIPUR"
   },
   {
     quote:
-      "Speed, flexibility, and quality. Our demands are high, but Sritek enforces our values and makes them stronger.",
-    client: "NODEX",
+      "The ability to adapt in a rapidly changing business environment and close communication makes Sritek a strong software development partner.",
+    company: "KILO.HEALTH"
   },
   {
     quote:
-      "Working with Sritek since day one. Their team is highly qualified, communication always effortless.",
-    client: "ZEPHYR",
+      "Speed, flexibility, and quality are key values. Sritek enforces our values and makes them even stronger.",
+    company: "FINTEGRY"
   },
   {
     quote:
-      "They didn't just build our product — they understood our vision and elevated it beyond what we imagined possible.",
-    client: "STRATA",
-  },
-  {
-    quote:
-      "Our SaaS platform went from concept to paying customers in under 8 weeks. Sritek's velocity is unmatched.",
-    client: "KOVA",
-  },
+      "Sritek's developer works as part of our in-house IT team. Highly qualified professional, happy to have such a partner.",
+    company: "SPOTOS"
+  }
 ];
