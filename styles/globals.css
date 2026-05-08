@@ -33,9 +33,10 @@ html,
 body {
   padding: 0;
   max-width: 100vw;
+  min-height: 100vh;
   overflow-x: hidden;
   scroll-behavior: smooth;
-  background: #9a0002;
+  background: #130606;
 }
 
 body {

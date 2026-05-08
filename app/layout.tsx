@@ -4,6 +4,7 @@ import { Barlow_Condensed, DM_Sans } from "next/font/google";
 import "@/styles/globals.css";
 import Navbar from "@/components/layout/Navbar";
 import LenisProvider from "@/components/LenisProvider";
+import LoadingScreen from "@/components/LoadingScreen";
 
 const barlow = Barlow_Condensed({
   subsets: ["latin"],
@@ -50,10 +51,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${barlow.variable} ${dmSans.variable}`}>
       <body>
-        <LenisProvider>
-          <Navbar />
-          {children}
-        </LenisProvider>
+        <LoadingScreen>
+          <LenisProvider>
+            <Navbar />
+            {children}
+          </LenisProvider>
+        </LoadingScreen>
         <Script
           id="org-schema"
           type="application/ld+json"

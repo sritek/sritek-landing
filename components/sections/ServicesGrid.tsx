@@ -15,7 +15,7 @@ export default function ServicesGrid() {
             <h3 className="whitespace-pre-line font-display text-6xl font-extrabold leading-none text-dark">
               {service.title}
             </h3>
-            <span className="absolute right-6 top-6 inline-flex h-10 w-10 items-center justify-center rounded-sm bg-cream opacity-0 transition group-hover:opacity-100">
+            <span className="absolute right-6 top-6 inline-flex h-10 w-10 items-center justify-center rounded-sm bg-cream text-red opacity-0 transition group-hover:opacity-100">
               →
             </span>
           </article>

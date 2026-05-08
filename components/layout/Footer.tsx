@@ -38,7 +38,7 @@ export default function Footer() {
     };
   }, []);
   return (
-    <footer ref={ref} className="bg-dark">
+    <footer ref={ref} className="bg-dark overflow-hidden">
       <div className="section-container grid grid-cols-2 gap-8 py-20 md:grid-cols-5">
         {cols.map((c) => (
           <div key={c.title}>

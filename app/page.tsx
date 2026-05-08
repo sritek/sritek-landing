@@ -11,7 +11,7 @@ import Footer from "@/components/layout/Footer";
 import PageProgress from "@/components/ui/PageProgress";
 
 export const metadata: Metadata = {
-  title: "Home"
+  title: "Home",
 };
 
 export default function HomePage() {
@@ -25,8 +25,8 @@ export default function HomePage() {
       <OurWork />
       <TestimonialCarousel />
       <CTABanner />
-      <Footer />
       <PageProgress />
+      <Footer />
     </main>
   );
 }

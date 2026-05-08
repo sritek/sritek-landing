@@ -26,7 +26,7 @@ export default function OurWork() {
           ))}
         </div>
         <div className="mt-10 text-center">
-          <Button variant="outline">Show More</Button>
+          <Button variant="primary">Show More</Button>
         </div>
       </div>
     </section>
