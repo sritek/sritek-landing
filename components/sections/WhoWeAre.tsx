@@ -3,10 +3,10 @@ import Image from "next/image";
 
 export default function WhoWeAre() {
   return (
-    <section className="bg-[#0D0D1F] section-padding">
+    <section className="bg-dark section-padding">
       <div className="section-container grid items-center gap-12 lg:grid-cols-2">
         <div className="relative h-[480px]">
-          <div className="absolute left-0 top-0 h-64 w-52 rotate-[-3deg] rounded-2xl border-2 border-[#9a0002] bg-gray-700">
+          <div className="absolute left-0 top-0 h-64 w-52 rotate-[-3deg] rounded-2xl border-2 border-red bg-gray-700">
             <Image
               src="/team1.jpeg"
               alt="Team Member 1"
@@ -22,7 +22,7 @@ export default function WhoWeAre() {
               height={200}
             />
           </div>
-          <div className="absolute left-44 top-40 h-60 w-52 rotate-2 rounded-2xl border-2 border-[#9a0002] bg-gray-700">
+          <div className="absolute left-44 top-40 h-60 w-52 rotate-2 rounded-2xl border-2 border-red bg-gray-700">
             <Image
               src="/team3.jpeg"
               alt="Team Member 3"
@@ -32,7 +32,7 @@ export default function WhoWeAre() {
           </div>
         </div>
         <div>
-          <h2 className="font-display text-6xl font-extrabold text-[#4DFF7C]">
+          <h2 className="font-display text-6xl font-extrabold text-cream">
             WHO WE ARE
           </h2>
           <p className="mt-6 max-w-md text-lg text-white/85">

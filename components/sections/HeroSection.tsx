@@ -27,11 +27,11 @@ export default function HeroSection() {
     return () => ctx.revert();
   }, []);
   return (
-    <section className="bg-[#9a0002] px-6 pb-12 pt-[72px]">
-      <div className="relative min-h-[85vh] overflow-hidden rounded-2xl bg-[#0D0D1F] p-6 md:p-12">
+    <section className="bg-red px-6 pb-12 pt-[72px]">
+      <div className="relative min-h-[85vh] overflow-hidden rounded-2xl bg-dark p-6 md:p-12">
         <GridDotBackground />
         <div className="relative z-10">
-          <h1 className="font-display font-extrabold uppercase text-[#4DFF7C]">
+          <h1 className="font-display font-extrabold uppercase text-cream">
             {["TURNING", "IDEAS", "INTO POWERFUL", "SOLUTIONS"].map((line) => (
               <span
                 key={line}

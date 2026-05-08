@@ -27,38 +27,38 @@ const milestones = [
 export default function AboutPage() {
   return (
     <main className="pt-[72px]">
-      <section className="bg-[#9a0002] section-padding">
+      <section className="bg-red section-padding">
         <div className="section-container">
           <h1 className="font-display text-[clamp(4rem,10vw,9rem)] font-extrabold text-white">
             THE TEAM BEHIND YOUR SOFTWARE
           </h1>
         </div>
       </section>
-      <section className="bg-[#9a0002] px-6 pb-20">
+      <section className="bg-red px-6 pb-20">
         <div className="section-container h-80 rounded-2xl bg-gray-700" />
       </section>
-      <section className="bg-[#9a0002] py-20">
+      <section className="bg-red py-20">
         <p className="section-container ml-auto max-w-2xl text-xl leading-relaxed text-white">
           Our talented team of developers, UI/UX designers, and project managers
           is passionate about turning your business needs into efficient
           software.
         </p>
       </section>
-      <section className="bg-[#0D0D1F] section-padding">
+      <section className="bg-dark section-padding">
         <div className="section-container grid gap-8 md:grid-cols-3">
           {milestones.map((m) => (
             <div key={m.no}>
-              <p className="font-display text-8xl font-extrabold text-[#4DFF7C]">
+              <p className="font-display text-8xl font-extrabold text-cream">
                 {m.no}
               </p>
-              <div className="my-4 h-px w-full bg-[#4DFF7C]" />
+              <div className="my-4 h-px w-full bg-cream" />
               <h3 className="text-2xl font-semibold text-white">{m.title}</h3>
               <p className="mt-2 text-white/70">{m.body}</p>
             </div>
           ))}
         </div>
       </section>
-      <section className="bg-[#9a0002] section-padding">
+      <section className="bg-red section-padding">
         <div className="section-container space-y-6">
           {[
             "Embracing Ideas and Innovation",
@@ -81,9 +81,9 @@ export default function AboutPage() {
           ))}
         </div>
       </section>
-      <section className="bg-[#0D0D1F] section-padding">
+      <section className="bg-dark section-padding">
         <div className="section-container">
-          <h2 className="mb-12 font-display text-7xl font-extrabold text-[#4DFF7C]">
+          <h2 className="mb-12 font-display text-7xl font-extrabold text-cream">
             THE TEAM
           </h2>
           <div className="grid gap-6 md:grid-cols-3">
@@ -95,10 +95,8 @@ export default function AboutPage() {
               <article key={m.name} className="overflow-hidden rounded-2xl">
                 <div className="h-56 bg-gray-700" />
                 <div className="bg-white p-6">
-                  <h4 className="text-lg font-medium text-[#0D0D1F]">
-                    {m.name}
-                  </h4>
-                  <p className="text-xs uppercase tracking-widest text-[#9a0002]">
+                  <h4 className="text-lg font-medium text-dark">{m.name}</h4>
+                  <p className="text-xs uppercase tracking-widest text-red">
                     {m.role}
                   </p>
                 </div>

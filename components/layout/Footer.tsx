@@ -38,11 +38,11 @@ export default function Footer() {
     };
   }, []);
   return (
-    <footer ref={ref} className="bg-[#0D0D1F]">
+    <footer ref={ref} className="bg-dark">
       <div className="section-container grid grid-cols-2 gap-8 py-20 md:grid-cols-5">
         {cols.map((c) => (
           <div key={c.title}>
-            <h4 className="mb-4 text-xs font-medium uppercase tracking-widest text-[#9a0002]">
+            <h4 className="mb-4 text-xs font-medium uppercase tracking-widest text-red">
               {c.title}
             </h4>
             {c.items.map((i) => (
@@ -56,7 +56,7 @@ export default function Footer() {
       <div className="border-t border-white/10 px-12 py-6 text-xs text-white/40">
         © 2026 SRITEK
       </div>
-      <div className="watermark select-none text-center font-display text-[clamp(12rem,40vw,32rem)]  font-extrabold leading-[0.85] text-[#9a0002]">
+      <div className="watermark select-none text-center font-display text-[clamp(12rem,40vw,32rem)]  font-extrabold leading-[0.85] text-red">
         SRITEK
       </div>
     </footer>

@@ -8,7 +8,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
   if (!service) notFound();
   return (
     <main className="pt-[72px]">
-      <section className="bg-[#9a0002] section-padding">
+      <section className="bg-red section-padding">
         <div className="section-container">
           <p className="text-xs uppercase tracking-widest text-white/70">
             Service / {service.id}

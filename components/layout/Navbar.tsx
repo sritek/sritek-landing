@@ -29,7 +29,7 @@ export default function Navbar() {
   return (
     <nav
       ref={navRef}
-      className="fixed inset-x-0 top-0 z-50 bg-[#9a0002]"
+      className="fixed inset-x-0 top-0 z-50 bg-red"
       aria-label="Main navigation"
     >
       <div className="nav-shell section-container flex h-[72px] items-center justify-between">
@@ -65,7 +65,7 @@ export default function Navbar() {
         </button>
       </div>
       {open && (
-        <div className="fixed inset-0 z-40 flex flex-col justify-center gap-6 bg-[#9a0002] px-8 md:hidden">
+        <div className="fixed inset-0 z-40 flex flex-col justify-center gap-6 bg-red px-8 md:hidden">
           {links.map((link) => (
             <a
               key={link}

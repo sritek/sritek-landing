@@ -27,12 +27,11 @@ export default function Button({
   };
   const variants = {
     primary:
-      "bg-[#4DFF7C] text-[#0D0D1F] font-bold rounded-md hover:shadow-[-5px_5px_0px_0px_#0d0d1f]",
+      "bg-cream text-dark font-bold rounded-md hover:shadow-[-5px_5px_0px_0px_#130606]",
     purpleShadow:
-      "bg-[#4DFF7C] text-[#0D0D1F] font-bold rounded-md hover:shadow-[-5px_5px_0px_0px_#9a0002]",
-    outline:
-      "border-2 border-[#4DFF7C] text-[#4DFF7C] hover:bg-[#4DFF7C] hover:text-[#0D0D1F]",
-    dark: "bg-[#0D0D1F] text-white hover:bg-[#0D0D1F]/80",
+      "bg-cream text-dark font-bold rounded-md hover:shadow-[-5px_5px_0px_0px_#9a0002]",
+    outline: "border-2 border-cream text-cream hover:bg-cream hover:text-dark",
+    dark: "bg-dark text-white hover:bg-dark/80",
   };
   const classes = clsx(base, sizes[size], variants[variant], className);
 

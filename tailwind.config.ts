@@ -9,17 +9,19 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        purple: {
+        red: {
           DEFAULT: "#9a0002",
-          dark: "#5500DD",
+          dark: "#7a0001",
         },
-        green: {
-          neon: "#4DFF7C",
-          dark: "#39E865",
+        cream: {
+          DEFAULT: "#efe6de",
+          dark: "#d9cfc5",
+          muted: "#e8ddd4",
+          border: "#d4c8bb",
         },
-        navy: {
-          DEFAULT: "#0D0D1F",
-          deep: "#0A0A18",
+        dark: {
+          DEFAULT: "#130606",
+          deep: "#0e0404",
         },
       },
       fontFamily: {

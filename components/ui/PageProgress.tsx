@@ -27,7 +27,7 @@ export default function PageProgress() {
 
   return (
     <div className="fixed bottom-8 right-8 z-50 hidden md:block">
-      <div className="relative flex h-16 w-16 items-center justify-center rounded-full bg-[#0D0D1F] shadow-xl">
+      <div className="relative flex h-16 w-16 items-center justify-center rounded-full bg-dark shadow-xl">
         <svg className="absolute h-16 w-16 -rotate-90" viewBox="0 0 64 64">
           <circle
             cx="32"
