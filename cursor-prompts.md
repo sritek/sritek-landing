@@ -21,7 +21,7 @@ After creating, install these additional packages:
   gsap @studio-freight/lenis lucide-react clsx tailwind-merge
 
 Then configure tailwind.config.ts to extend with these custom colors and font variables:
-  - colors: purple (#6600FF), green.neon (#4DFF7C), navy (#0D0D1F)
+  - colors: purple (#9a0002), green.neon (#4DFF7C), navy (#0D0D1F)
   - fontFamily: display (var(--font-display)), body (var(--font-body))
 
 Configure app/layout.tsx to import Barlow Condensed (weights 700, 800) and DM Sans (weights 400, 500) from next/font/google and apply as CSS variables --font-display and --font-body on the html element.
@@ -114,7 +114,7 @@ Build the Navbar component in components/layout/Navbar.tsx following design.md s
 Requirements:
 - "use client" directive
 - Fixed top, full width, z-index 50
-- Background: bg-[#6600FF] (purple)
+- Background: bg-[#9a0002] (purple)
 - Height: 72px, flex items-center
 - Logo: "SRITEK" in white, Barlow Condensed font, text-2xl font-extrabold, left side
 - Navigation links center: SERVICES (with dropdown arrow ▾), PROJECTS, ABOUT, ARTICLES, EN ▾
@@ -151,14 +151,14 @@ Structure:
   4. FOLLOW US — links: Instagram, LinkedIn, Twitter, GitHub
   5. GET IN TOUCH — info: hello@sritek.in, +91-XXXXXXXXXX, Jaipur, Rajasthan, India
 
-  Column header style: text-[#6600FF] text-xs font-medium uppercase tracking-widest mb-4
+  Column header style: text-[#9a0002] text-xs font-medium uppercase tracking-widest mb-4
   Link style: text-white/80 text-sm hover:text-[#4DFF7C] transition-colors block mb-2
 
 - Divider: thin border-white/10 border-t
 
 - Copyright: "© 2026 SRITEK" — text-white/40 text-xs px-12 py-6
 
-- Brand watermark: "SRITEK" in Barlow Condensed, font-extrabold, text-[#6600FF]
+- Brand watermark: "SRITEK" in Barlow Condensed, font-extrabold, text-[#9a0002]
   - Font size: clamp(6rem, 20vw, 18rem)
   - Display block, w-full text-center or stretched
   - Line height 0.85, overflow hidden, select-none
@@ -211,7 +211,7 @@ Build HeroSection in components/sections/HeroSection.tsx following design.md sec
 
 Layout:
 - Full viewport height (min-h-screen)
-- Outer wrapper: bg-[#6600FF] (purple) with padding ~px-6 pb-12 pt-[72px] (accounting for navbar)
+- Outer wrapper: bg-[#9a0002] (purple) with padding ~px-6 pb-12 pt-[72px] (accounting for navbar)
 - Inner box: bg-[#0D0D1F] rounded-2xl relative overflow-hidden w-full min-h-[85vh]
   - Apply GridDotBackground component inside
 
@@ -219,7 +219,7 @@ Content:
 - Heading text: Barlow Condensed 800, neon green (#4DFF7C), uppercase
   Lines stacked:
   Line 1: "TURNING" — top-left, ~9rem
-  Line 2: "IDEAS" — top-right, ~9rem  
+  Line 2: "IDEAS" — top-right, ~9rem
   Line 3: "INTO  POWERFUL" — middle (two words spread apart), ~7rem
   Line 4: "SOLUTIONS" — bottom-right, ~9rem
   Use absolute/relative positioning or flex with justify-between for spread layout
@@ -264,7 +264,7 @@ Data: Create lib/data/clients.ts with array of { name, service } objects:
 Layout:
 - Background: bg-[#0D0D1F]
 - Two-column layout: left (40%) and right (60%)
-- Left: 
+- Left:
   - Heading "TRUSTED BY RAJASTHAN'S FASTEST GROWING COMPANIES" — Barlow Condensed 800, text-[#4DFF7C], ~4rem
   - GET IN TOUCH button below (Button component, variant="primary")
 - Right:
@@ -295,14 +295,14 @@ Data in lib/data/services.ts:
 ]
 
 Layout:
-- Background: bg-[#6600FF]
+- Background: bg-[#9a0002]
 - Section padding: py-20 px-8
 - 3×2 grid: grid grid-cols-1 md:grid-cols-3 gap-4
 
 ServiceCard component (inline):
 - bg-white rounded-2xl p-8 relative overflow-hidden cursor-pointer group
 - border-2 border-transparent hover:border-black transition-all duration-200
-- Service label: "SERVICE / 01" — text-[#6600FF] text-xs font-medium uppercase tracking-widest mb-4
+- Service label: "SERVICE / 01" — text-[#9a0002] text-xs font-medium uppercase tracking-widest mb-4
 - Title: Barlow Condensed 800, text-[#0D0D1F], text-4xl leading-none, whitespace-pre-line
 - Arrow button: absolute top-6 right-6, bg-[#4DFF7C] rounded-sm w-10 h-10 flex items-center justify-center
   - Hidden by default (opacity-0), shows on group-hover (opacity-100 scale 1)
@@ -335,7 +335,7 @@ Left content:
 
 Right illustration:
 - Absolutely positioned or right column
-- Purple tilted rectangle: bg-[#6600FF] w-[400px] h-[280px] rounded-xl rotate-6 relative
+- Purple tilted rectangle: bg-[#9a0002] w-[400px] h-[280px] rounded-xl rotate-6 relative
   - Pixel grid pattern inside: 6×8 grid of small squares, alternating green/purple colors
 - Robot mascot SVG overlapping rectangle: large head-bob character pointing at the grid
   - Reuse mascot from hero, different pose (pointing/touching grid)
@@ -353,14 +353,14 @@ GSAP:
 Build WhoWeAre section in components/sections/WhoWeAre.tsx following design.md section 5.6.
 
 Layout:
-- Background: bg-[#0D0D1F] inside purple margin (same pattern as hero — outer bg-[#6600FF], inner bg-[#0D0D1F] rounded-2xl) OR full dark
+- Background: bg-[#0D0D1F] inside purple margin (same pattern as hero — outer bg-[#9a0002], inner bg-[#0D0D1F] rounded-2xl) OR full dark
 - Two-column grid: photos left (55%), text right (45%)
 
 Photo collage (left):
 - 3 overlapping photo containers using absolute positioning within a relative container h-[600px]
-- Photo 1: top-left, w-56 h-72, rounded-2xl, border-2 border-[#6600FF], rotate-[-3deg], z-10
+- Photo 1: top-left, w-56 h-72, rounded-2xl, border-2 border-[#9a0002], rotate-[-3deg], z-10
 - Photo 2: center, w-64 h-80, rounded-2xl, border-2 border-white/20, z-20, translate-x-16 translate-y-8
-- Photo 3: bottom-right, w-56 h-64, rounded-2xl, border-2 border-[#6600FF], rotate-[2deg], z-10, translate-y-24
+- Photo 3: bottom-right, w-56 h-64, rounded-2xl, border-2 border-[#9a0002], rotate-[2deg], z-10, translate-y-24
 - Use bg-gray-700 placeholder with "Team Photo" text for now (real photos come later)
 
 Text (right):
@@ -391,7 +391,7 @@ Data in lib/data/projects.ts (3 sample projects):
     featured: true
   },
   {
-    id: "02", 
+    id: "02",
     category: "SAAS PRODUCT",
     title: "E-COMMERCE ANALYTICS DASHBOARD",
     description: "A full-stack SaaS analytics platform built for Jaipur's growing e-commerce sector...",
@@ -409,7 +409,7 @@ Data in lib/data/projects.ts (3 sample projects):
 ]
 
 Layout:
-- Background: bg-[#6600FF], py-20 px-8
+- Background: bg-[#9a0002], py-20 px-8
 - "OUR WORK" heading: Barlow Condensed 800, text-white, text-7xl, mb-12
 
 Cards layout:
@@ -418,7 +418,7 @@ Cards layout:
 
 ProjectCard component:
 - bg-white rounded-2xl p-8 overflow-hidden relative group cursor-pointer
-- Category label: text-[#6600FF] text-xs uppercase tracking-widest font-medium mb-2
+- Category label: text-[#9a0002] text-xs uppercase tracking-widest font-medium mb-2
 - Title: Barlow Condensed 800, text-[#0D0D1F], text-4xl, mb-4
 - Description: DM Sans 400, text-[#0D0D1F]/70, text-sm, line-clamp-3
 - Right side: placeholder image area (bg-gray-100 rounded-xl h-48)
@@ -446,7 +446,7 @@ Data in lib/data/testimonials.ts:
 ]
 
 Layout:
-- Background: bg-[#6600FF], py-20
+- Background: bg-[#9a0002], py-20
 - "CLIENT REVIEWS" heading: Barlow Condensed 800, text-white, text-7xl, px-8 mb-12
 
 Carousel:
@@ -454,7 +454,7 @@ Carousel:
 - Inner track: flex, transition-transform, gap-6
 - Each card: min-w-[340px], bg-white, rounded-2xl, p-8, flex-shrink-0
   - Quote text: DM Sans 400, text-[#0D0D1F], text-base, leading-relaxed, italic, mb-8
-  - Company: text-[#6600FF] text-xs uppercase tracking-widest font-medium
+  - Company: text-[#9a0002] text-xs uppercase tracking-widest font-medium
 - Show ~3.5 cards on desktop, 1.2 on mobile (peek next card)
 
 Navigation:
@@ -474,7 +474,7 @@ On mount GSAP:
 1. Build CTABanner in components/sections/CTABanner.tsx following design.md section 5.9:
 
 Layout:
-- Outer: bg-[#6600FF] px-6 pb-12
+- Outer: bg-[#9a0002] px-6 pb-12
 - Inner box: bg-[#0D0D1F] rounded-2xl relative overflow-hidden min-h-[420px] flex items-center justify-center
   - GridDotBackground overlay
 - Heading: "LET'S WORK TOGETHER" — Barlow Condensed 800, text-[#4DFF7C], text-center
@@ -518,7 +518,7 @@ Build the About page at app/about/page.tsx with all sections following design.md
 Sections in order:
 
 1. AboutHero:
-   - bg-[#6600FF], full height, huge white heading
+   - bg-[#9a0002], full height, huge white heading
    - "THE TEAM BEHIND YOUR SOFTWARE" Barlow Condensed 800, text-white, clamp(4rem, 10vw, 9rem)
    - Animated in via SplitText on page load
 
@@ -527,7 +527,7 @@ Sections in order:
    - Slight parallax on scroll: GSAP ScrollTrigger scrub, y moves -30px
 
 3. AboutDescription (right-aligned text block):
-   - bg-[#6600FF], text block on right side (ml-auto max-w-2xl px-12 py-20)
+   - bg-[#9a0002], text block on right side (ml-auto max-w-2xl px-12 py-20)
    - DM Sans 400, text-white, text-xl, leading-relaxed
    - "Our talented team of developers, UI/UX designers, and project managers is passionate about turning your business needs into efficient, scalable software solutions. As a trusted custom software company based in Jaipur, we specialize in web and mobile apps, SaaS platforms, and AI automation."
 
@@ -540,7 +540,7 @@ Sections in order:
    - GSAP: numbers count up from 0 when entering viewport, timeline line draws left to right
 
 5. Pillars:
-   - bg-[#6600FF] py-20 px-12
+   - bg-[#9a0002] py-20 px-12
    - SectionLabel: "THE PILLARS OF SRITEK"
    - 4 rows separated by border-white/20 border-b
    - Each row: flex justify-between items-start py-10
@@ -556,7 +556,7 @@ Sections in order:
    - 3-column grid of TeamMemberCards
    - TeamMemberCard: rounded-2xl overflow-hidden, top 65% bg-gray-700 (photo placeholder), bottom 35% bg-white p-6
      Name: DM Sans 500 text-[#0D0D1F] text-lg
-     Role: text-[#6600FF] text-xs uppercase tracking-widest
+     Role: text-[#9a0002] text-xs uppercase tracking-widest
    - Team members: Founder (CEO & Founder), CTO, Project Manager
    - GSAP: stagger cards from y: 60 opacity: 0
 
@@ -586,7 +586,7 @@ Add a custom cursor to the site:
 Update Navbar.tsx for complete mobile experience:
 - Below md breakpoint: show hamburger (Lucide Menu icon)
 - On click: full-screen menu overlay appears
-  - bg-[#6600FF] fixed inset-0 z-40 flex flex-col justify-center px-8
+  - bg-[#9a0002] fixed inset-0 z-40 flex flex-col justify-center px-8
   - GSAP animation: clipPath from "inset(0 0 100% 0)" to "inset(0 0 0% 0)", duration 0.6 ease "power3.inOut"
   - Links: vertical list, Barlow Condensed 800 text-white text-6xl, each link staggered in
   - Close (X) icon top-right
@@ -599,7 +599,7 @@ Update Navbar.tsx for complete mobile experience:
 Add animated number counters to the Trusted By section.
 Above the client list, add a stats row with 3 numbers:
 - "50+" Scale-ups
-- "3x" Faster Delivery  
+- "3x" Faster Delivery
 - "5+" Years Experience
 
 Each stat: large Barlow Condensed number in green, label below in white/60 DM Sans.
@@ -634,8 +634,8 @@ Do a final polish pass on the entire site:
 
 1. Typography: Ensure all display headings use Barlow Condensed with font-extrabold and uppercase
 2. Spacing: Verify section padding is consistent (py-20 lg:py-32) across all sections
-3. Color: No section should have mismatched backgrounds — alternate strictly between bg-[#6600FF] and bg-[#0D0D1F]
-4. Animations: 
+3. Color: No section should have mismatched backgrounds — alternate strictly between bg-[#9a0002] and bg-[#0D0D1F]
+4. Animations:
    - Ensure all ScrollTrigger animations have markers: false (remove debug markers)
    - All SplitText usage should clean up on component unmount (split.revert())
    - All GSAP animations should use gsap context for cleanup
