@@ -37,13 +37,13 @@ export default function Navbar() {
           href="/"
           className="font-display text-2xl font-extrabold text-white"
         >
-          <Image src="/logo.svg" alt="SRITEK" width={150} height={150} />
+          <Image src="/logo.svg" alt="SRITEK" width={130} height={130} />
         </Link>
         <div className="hidden items-center gap-8 md:flex">
           {links.map((link) => (
             <a
               key={link}
-              className="nav-link text-xs font-bold uppercase tracking-widest text-white/85 hover:text-white"
+              className="nav-link text-xs font-bold uppercase tracking-widest text-white/85 hover:text-white cursor-pointer"
             >
               {link}
             </a>

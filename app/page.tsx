@@ -9,6 +9,7 @@ import TestimonialCarousel from "@/components/sections/TestimonialCarousel";
 import CTABanner from "@/components/sections/CTABanner";
 import Footer from "@/components/layout/Footer";
 import PageProgress from "@/components/ui/PageProgress";
+import GridDotBackground from "@/components/ui/GridDotBackground";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -17,6 +18,7 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <main>
+      <GridDotBackground />
       <HeroSection />
       <TrustedBy />
       <ServicesGrid />
