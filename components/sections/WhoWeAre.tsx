@@ -40,12 +40,7 @@ export default function WhoWeAre() {
             project managers creating custom software, SaaS and AI that scales
             your business.
           </p>
-          <Button
-            href="/about"
-            variant="purpleShadow"
-            className="mt-8"
-            size="lg"
-          >
+          <Button href="/about" variant="redShadow" className="mt-8" size="lg">
             About Us
           </Button>
         </div>

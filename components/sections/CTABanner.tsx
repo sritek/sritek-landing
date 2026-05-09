@@ -12,7 +12,7 @@ export default function CTABanner() {
           <h2 className="font-display text-[clamp(3rem,8vw,7rem)] font-extrabold text-cream">
             LET&apos;S WORK TOGETHER
           </h2>
-          <Button className="mt-8" variant="purpleShadow" href="/contact">
+          <Button className="mt-8" variant="redShadow" href="/contact">
             Get In Touch
           </Button>
         </div>

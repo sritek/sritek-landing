@@ -29,6 +29,9 @@ export const metadata: Metadata = {
     description: "Custom software studio in Jaipur",
     url: "https://sritek.in",
   },
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { testimonials } from "@/lib/data/testimonials";
+import Button from "../ui/Button";
 
 export default function TestimonialCarousel() {
   const [index, setIndex] = useState(0);
@@ -27,20 +28,22 @@ export default function TestimonialCarousel() {
         </div>
       </div>
       <div className="mt-8 flex justify-center gap-3">
-        <button
-          className="h-12 w-12 rounded-sm bg-dark text-white"
+        <Button
+          variant="primary"
+          className="h-12 w-12 rounded-sm "
           onClick={() => setIndex((v) => Math.max(0, v - 1))}
         >
-          <ChevronLeft className="mx-auto" />
-        </button>
-        <button
-          className="h-12 w-12 rounded-sm bg-dark text-white"
+          Left
+        </Button>
+        <Button
+          variant="primary"
+          className="h-12 w-12 rounded-sm "
           onClick={() =>
             setIndex((v) => Math.min(testimonials.length - 1, v + 1))
           }
         >
-          <ChevronRight className="mx-auto" />
-        </button>
+          right
+        </Button>
       </div>
     </section>
   );

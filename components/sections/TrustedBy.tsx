@@ -11,7 +11,7 @@ export default function TrustedBy() {
           <h2 className="font-display text-[clamp(2rem,5vw,4rem)] font-extrabold text-cream">
             TRUSTED BY INDIA&apos;S FASTEST GROWING COMPANIES
           </h2>
-          <Button className="mt-8" variant="purpleShadow" href="/contact">
+          <Button className="mt-8" variant="redShadow" href="/contact">
             Get In Touch
           </Button>
         </div>
