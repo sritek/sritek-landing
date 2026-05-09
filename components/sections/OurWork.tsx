@@ -9,10 +9,10 @@ export default function OurWork() {
           OUR WORK
         </h2>
         <div className="grid gap-6 md:grid-cols-2">
-          {projects.map((project) => (
+          {projects.map((project, index) => (
             <article
               key={project.id}
-              className={`rounded-2xl bg-white p-8 ${project.featured ? "border-2 border-dark" : ""}`}
+              className={`rounded-2xl bg-white p-8 ${project.featured ? "border-2 border-dark" : ""} ${index === 2 ? "md:col-span-2" : ""}`}
             >
               <p className="text-xs uppercase tracking-widest text-red">
                 {project.category}
