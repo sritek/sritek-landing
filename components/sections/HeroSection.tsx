@@ -49,10 +49,10 @@ export default function HeroSection() {
         <div className="hero-mascot absolute right-6 top-1/2 hidden -translate-y-1/2 md:block">
           <div>
             <Image
-              src="/hero-girl.png"
+              src="/hero-astro.png"
               alt="SRITEK Mascot"
               width={500}
-              height={200}
+              height={250}
             />
           </div>
         </div>
