@@ -4,32 +4,14 @@ import Image from "next/image";
 export default function WhoWeAre() {
   return (
     <section className="bg-dark section-padding">
-      <div className="section-container grid items-center gap-12 lg:grid-cols-2">
-        <div className="relative h-[480px]">
-          <div className="absolute left-0 top-0 h-64 w-52 rotate-[-3deg] rounded-2xl border-2 border-red bg-gray-700">
-            <Image
-              src="/team1.jpeg"
-              alt="Team Member 1"
-              width={200}
-              height={200}
-            />
-          </div>
-          <div className="absolute left-24 top-12 h-72 w-56 rounded-2xl border border-white/20 bg-gray-600">
-            <Image
-              src="/team2.jpeg"
-              alt="Team Member 2"
-              width={200}
-              height={200}
-            />
-          </div>
-          <div className="absolute left-44 top-40 h-60 w-52 rotate-2 rounded-2xl border-2 border-red bg-gray-700">
-            <Image
-              src="/team3.jpeg"
-              alt="Team Member 3"
-              width={200}
-              height={200}
-            />
-          </div>
+      <div className="section-container grid items-center gap-12 lg:grid-cols-2 ">
+        <div className="relative h-96 w-full max-w-md rounded-2xl border-2 border-red bg-gray-700 overflow-hidden">
+          <Image
+            src="/team.jpeg"
+            alt="Team Members"
+            fill
+            className="object-cover"
+          />
         </div>
         <div>
           <h2 className="font-display text-6xl font-extrabold text-cream">
