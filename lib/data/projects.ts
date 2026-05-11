@@ -6,16 +6,16 @@ export const projects = [
     description:
       "AI-powered video survey platform transforms market research by capturing authentic feedback with video, offering real insights.",
     slug: "ai-video-survey",
-    featured: true
+    featured: true,
   },
   {
     id: "02",
     category: "SAAS PRODUCT",
-    title: "E-COMMERCE ANALYTICS DASHBOARD",
+    title: "E-COMMERCE ANALYTICS",
     description:
       "A full-stack SaaS analytics platform built for Jaipur's growing e-commerce sector.",
     slug: "ecommerce-analytics",
-    featured: false
+    featured: false,
   },
   {
     id: "03",
@@ -24,6 +24,6 @@ export const projects = [
     description:
       "A sheet metal processing company modernized custom orders with a custom e-commerce platform.",
     slug: "quoting-system",
-    featured: false
-  }
+    featured: false,
+  },
 ];

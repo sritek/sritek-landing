@@ -84,7 +84,7 @@ export default function ContactPage() {
                   </p>
                 </div>
               </div>
-              <Button variant="redShadow" size="md">
+              <Button variant="redShadow" size="sm">
                 Book Meeting
               </Button>
             </div>

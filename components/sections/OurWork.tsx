@@ -12,7 +12,7 @@ export default function OurWork() {
           {projects.map((project, index) => (
             <article
               key={project.id}
-              className={`rounded-2xl bg-white p-8 ${project.featured ? "border-2 border-dark" : ""} ${index === 2 ? "md:col-span-2" : ""}`}
+              className={` ${index === 2 ? "md:col-span-2" : ""} group relative cursor-pointer overflow-hidden rounded-2xl border-2 border-transparent bg-white p-8 transition-all duration-200 hover:scale-[1.02] hover:border-black`}
             >
               <p className="text-xs uppercase tracking-widest text-red">
                 {project.category}
@@ -22,6 +22,9 @@ export default function OurWork() {
               </h3>
               <p className="mt-4 text-sm text-dark/70">{project.description}</p>
               <div className="mt-6 h-40 rounded-xl bg-gray-100" />
+              <span className="absolute right-6 top-6 inline-flex h-10 w-10 items-center justify-center rounded-sm bg-red text-cream opacity-0 transition group-hover:opacity-100">
+                →
+              </span>
             </article>
           ))}
         </div>
