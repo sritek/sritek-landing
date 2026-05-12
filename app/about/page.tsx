@@ -1,112 +1,137 @@
-import type { Metadata } from "next";
-import Footer from "@/components/layout/Footer";
-import CTABanner from "@/components/sections/CTABanner";
+"use client";
 
-export const metadata: Metadata = {
-  title: "About",
-};
+import Link from "next/link";
+import { Menu, X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import gsap from "gsap"; // ✅ direct import, no custom wrapper
+import Button from "@/components/ui/Button";
+import Image from "next/image";
+import clsx from "clsx";
 
-const milestones = [
-  {
-    no: "01",
-    title: "Foundation",
-    body: "Sritek started in Jaipur with a focus on quality software delivery.",
-  },
-  {
-    no: "02",
-    title: "Initial Growth",
-    body: "Expanded into SaaS, mobile apps, and UI/UX projects.",
-  },
-  {
-    no: "03",
-    title: "From Local to Global",
-    body: "Now partnering with startups across regions.",
-  },
+const links = [
+  { label: "SERVICES ▾", href: "/services" },
+  { label: "PROJECTS", href: "/projects" },
+  { label: "ABOUT", href: "/about", active: true },
+  { label: "ARTICLES", href: "/articles" },
+  { label: "EN ▾", href: "#" },
 ];
 
-export default function AboutPage() {
+export default function Navbar() {
+  const [open, setOpen] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const el = navRef.current;
+    if (!el) return; // ✅ guard: don't run if ref isn't attached
+
+    const ctx = gsap.context(() => {
+      gsap.from(".nav-shell", {
+        y: -100,
+        opacity: 0,
+        duration: 0.7,
+        ease: "power3.out",
+      });
+
+      gsap.from(".nav-link", {
+        opacity: 0,
+        y: -10,
+        stagger: 0.08,
+        delay: 0.2,
+        duration: 0.45,
+        ease: "power2.out",
+      });
+    }, el); // ✅ pass navRef.current, not navRef
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <main className="pt-[72px]">
-      <section className="bg-red section-padding">
-        <div className="section-container">
-          <h1 className="font-display text-[clamp(4rem,10vw,9rem)] font-extrabold text-white">
-            THE TEAM BEHIND YOUR SOFTWARE
-          </h1>
-        </div>
-      </section>
-      <section className="bg-red px-6 pb-20">
-        <div className="section-container h-80 rounded-2xl bg-gray-700" />
-      </section>
-      <section className="bg-red py-20">
-        <p className="section-container ml-auto max-w-2xl text-xl leading-relaxed text-white">
-          Our talented team of developers, UI/UX designers, and project managers
-          is passionate about turning your business needs into efficient
-          software.
-        </p>
-      </section>
-      <section className="bg-dark section-padding">
-        <div className="section-container grid gap-8 md:grid-cols-3">
-          {milestones.map((m) => (
-            <div key={m.no}>
-              <p className="font-display text-8xl font-extrabold text-cream">
-                {m.no}
-              </p>
-              <div className="my-4 h-px w-full bg-cream" />
-              <h3 className="text-2xl font-semibold text-white">{m.title}</h3>
-              <p className="mt-2 text-white/70">{m.body}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-      <section className="bg-red section-padding">
-        <div className="section-container space-y-6">
-          {[
-            "Embracing Ideas and Innovation",
-            "Driven for Excellence",
-            "Dedicated to Success",
-            "Honesty and Clarity",
-          ].map((p) => (
-            <div
-              key={p}
-              className="flex flex-col justify-between border-b border-white/20 py-8 md:flex-row"
+    <nav
+      ref={navRef}
+      className="fixed inset-x-0 top-0 z-50 bg-red"
+      aria-label="Main navigation"
+    >
+      <div className="nav-shell section-container flex h-[78px] items-center justify-between">
+        {/* Logo */}
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/logo.svg"
+            alt="SRITEK"
+            width={132}
+            height={32}
+            priority
+            className="w-[120px] object-contain"
+          />
+        </Link>
+
+        {/* Desktop Nav */}
+        <div className="hidden items-center gap-3 md:flex">
+          {links.map((link) => (
+            <Link
+              key={link.label}
+              href={link.href}
+              className={clsx(
+                "nav-link rounded-[10px] px-5 py-3 text-[12px] font-bold uppercase tracking-[0.12em] transition-all duration-300",
+                link.active
+                  ? "bg-black text-white"
+                  : "text-white/90 hover:bg-black/20 hover:text-white",
+              )}
             >
-              <h3 className="font-display text-5xl font-extrabold text-white">
-                {p}
-              </h3>
-              <p className="max-w-md text-white/80">
-                We combine practical execution with ambitious thinking to
-                deliver outcomes.
-              </p>
-            </div>
+              {link.label}
+            </Link>
           ))}
         </div>
-      </section>
-      <section className="bg-dark section-padding">
-        <div className="section-container">
-          <h2 className="mb-12 font-display text-7xl font-extrabold text-cream">
-            THE TEAM
-          </h2>
-          <div className="grid gap-6 md:grid-cols-3">
-            {[
-              { name: "Founder", role: "CEO & Founder" },
-              { name: "CTO", role: "Tech Lead" },
-              { name: "Project Manager", role: "Delivery" },
-            ].map((m) => (
-              <article key={m.name} className="overflow-hidden rounded-2xl">
-                <div className="h-56 bg-gray-700" />
-                <div className="bg-white p-6">
-                  <h4 className="text-lg font-medium text-dark">{m.name}</h4>
-                  <p className="text-xs uppercase tracking-widest text-red">
-                    {m.role}
-                  </p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-      <CTABanner />
-      <Footer />
-    </main>
+
+        {/* CTA */}
+        <Button
+          className="hidden md:inline-flex rounded-xl px-7 text-[12px] font-bold uppercase tracking-[0.12em]"
+          variant="primary"
+          href="/contact"
+        >
+          Get In Touch
+        </Button>
+
+        {/* Mobile Toggle */}
+        <button
+          className="flex h-11 w-11 items-center justify-center rounded-lg text-white transition hover:bg-white/10 md:hidden"
+          onClick={() => setOpen((v) => !v)}
+          aria-label="Menu"
+        >
+          {open ? <X size={22} /> : <Menu size={22} />}
+        </button>
+      </div>
+
+      {/* Mobile Menu */}
+      <div
+        className={clsx(
+          "fixed inset-0 z-40 flex flex-col justify-center gap-6 bg-red px-8 transition-all duration-500 md:hidden",
+          open
+            ? "pointer-events-auto opacity-100"
+            : "pointer-events-none opacity-0",
+        )}
+      >
+        {links.map((link) => (
+          <Link
+            key={link.label}
+            href={link.href}
+            onClick={() => setOpen(false)}
+            className={clsx(
+              "font-display text-5xl font-extrabold uppercase tracking-tight text-white transition-all duration-300",
+              link.active && "text-primary",
+            )}
+          >
+            {link.label}
+          </Link>
+        ))}
+
+        <Button
+          variant="primary"
+          href="/contact"
+          className="mt-6 w-full justify-center rounded-xl py-4 text-sm font-bold uppercase tracking-[0.12em]"
+        >
+          Get In Touch
+        </Button>
+      </div>
+    </nav>
   );
 }

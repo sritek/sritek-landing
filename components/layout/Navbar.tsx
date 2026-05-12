@@ -7,24 +7,55 @@ import { gsap } from "@/lib/gsap";
 import Button from "@/components/ui/Button";
 import Image from "next/image";
 
-const links = ["SERVICES ▾", "PROJECTS", "ABOUT", "ARTICLES", "EN ▾"];
+const links = [
+  { label: "SERVICES ▾", href: "/services" },
+  { label: "PROJECTS", href: "/projects" },
+  { label: "ABOUT", href: "/about" },
+  { label: "ARTICLES", href: "/articles" },
+  { label: "EN ▾", href: "#" },
+];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(".nav-shell", {
-        y: -100,
-        opacity: 0,
-        duration: 0.6,
-        ease: "power2.out",
-      });
-      gsap.from(".nav-link", { opacity: 0, y: -8, stagger: 0.1, delay: 0.2 });
-    }, navRef);
-    return () => ctx.revert();
-  }, []);
+  if (!navRef.current) return;
+
+  const nav = navRef.current;
+
+  gsap.fromTo(
+    ".nav-shell",
+    {
+      y: -80,
+      opacity: 0,
+    },
+    {
+      y: 0,
+      opacity: 1,
+      duration: 0.7,
+      ease: "power3.out",
+      clearProps: "all",
+    }
+  );
+
+  gsap.fromTo(
+    ".nav-link",
+    {
+      y: -10,
+      opacity: 0,
+    },
+    {
+      y: 0,
+      opacity: 1,
+      stagger: 0.08,
+      delay: 0.15,
+      duration: 0.45,
+      ease: "power2.out",
+      clearProps: "all",
+    }
+  );
+}, []);
 
   return (
     <nav
@@ -41,12 +72,13 @@ export default function Navbar() {
         </Link>
         <div className="hidden items-center gap-8 md:flex">
           {links.map((link) => (
-            <a
-              key={link}
+            <Link
+              key={link.label}
+              href={link.href}
               className="nav-link text-xs font-bold uppercase tracking-widest text-white/85 hover:text-white cursor-pointer"
             >
-              {link}
-            </a>
+              {link.label}
+            </Link>
           ))}
         </div>
         <Button
@@ -67,12 +99,13 @@ export default function Navbar() {
       {open && (
         <div className="fixed inset-0 z-40 flex flex-col justify-center gap-6 bg-red px-8 md:hidden">
           {links.map((link) => (
-            <a
-              key={link}
+            <Link
+              key={link.label}
+              href={link.href}
               className="font-display text-5xl font-extrabold text-white"
             >
-              {link}
-            </a>
+              {link.label}
+            </Link>
           ))}
         </div>
       )}
