@@ -1,26 +1,36 @@
 "use client";
+
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import { gsap } from "@/lib/gsap";
+import gsap from "gsap"; // ✅ direct import, no custom wrapper
 import Button from "@/components/ui/Button";
 import Image from "next/image";
+import clsx from "clsx";
+
 const links = [
   { label: "SERVICES ▾", href: "/services" },
   { label: "PROJECTS", href: "/projects" },
-  { label: "ABOUT", href: "/about" },
+  { label: "ABOUT", href: "/about", active: true },
   { label: "ARTICLES", href: "/articles" },
   { label: "EN ▾", href: "#" },
 ];
+
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const navRef = useRef<HTMLElement>(null);
+
   useEffect(() => {
     if (!navRef.current) return;
+
     const nav = navRef.current;
+
     gsap.fromTo(
       ".nav-shell",
-      { y: -80, opacity: 0 },
+      {
+        y: -80,
+        opacity: 0,
+      },
       {
         y: 0,
         opacity: 1,
@@ -29,9 +39,13 @@ export default function Navbar() {
         clearProps: "all",
       },
     );
+
     gsap.fromTo(
       ".nav-link",
-      { y: -10, opacity: 0 },
+      {
+        y: -10,
+        opacity: 0,
+      },
       {
         y: 0,
         opacity: 1,
@@ -43,67 +57,94 @@ export default function Navbar() {
       },
     );
   }, []);
+
   return (
     <nav
       ref={navRef}
       className="fixed inset-x-0 top-0 z-50 bg-red"
       aria-label="Main navigation"
     >
-      {" "}
-      <div className="nav-shell section-container flex h-[72px] items-center justify-between">
-        {" "}
-        <Link
-          href="/"
-          className="font-display text-2xl font-extrabold text-white"
-        >
-          {" "}
-          <Image src="/logo.svg" alt="SRITEK" width={130} height={130} />{" "}
-        </Link>{" "}
-        <div className="hidden items-center gap-8 md:flex">
-          {" "}
+      <div className="nav-shell section-container flex h-[78px] items-center justify-between">
+        {/* Logo */}
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/logo.svg"
+            alt="SRITEK"
+            width={132}
+            height={32}
+            priority
+            className="w-[120px] object-contain"
+          />
+        </Link>
+
+        {/* Desktop Nav */}
+        <div className="hidden items-center gap-3 md:flex">
           {links.map((link) => (
             <Link
               key={link.label}
               href={link.href}
-              className="nav-link text-xs font-bold uppercase tracking-widest text-white/85 hover:text-white cursor-pointer"
+              className={clsx(
+                "nav-link rounded-[10px] px-5 py-3 text-[12px] font-bold uppercase tracking-[0.12em] transition-all duration-300",
+                link.active
+                  ? "bg-black text-white"
+                  : "text-white/90 hover:bg-black/20 hover:text-white",
+              )}
             >
-              {" "}
-              {link.label}{" "}
+              {link.label}
             </Link>
-          ))}{" "}
-        </div>{" "}
+          ))}
+        </div>
+
+        {/* CTA */}
         <Button
-          className="hidden md:inline-flex"
+          className="hidden md:inline-flex rounded-xl px-7 text-[12px] font-bold uppercase tracking-[0.12em]"
           variant="primary"
           href="/contact"
         >
-          {" "}
-          Get In Touch{" "}
-        </Button>{" "}
+          Get In Touch
+        </Button>
+
+        {/* Mobile Toggle */}
         <button
-          className="text-white md:hidden"
+          className="flex h-11 w-11 items-center justify-center rounded-lg text-white transition hover:bg-white/10 md:hidden"
           onClick={() => setOpen((v) => !v)}
           aria-label="Menu"
         >
-          {" "}
-          {open ? <X /> : <Menu />}{" "}
-        </button>{" "}
-      </div>{" "}
-      {open && (
-        <div className="fixed inset-0 z-40 flex flex-col justify-center gap-6 bg-red px-8 md:hidden">
-          {" "}
-          {links.map((link) => (
-            <Link
-              key={link.label}
-              href={link.href}
-              className="font-display text-5xl font-extrabold text-white"
-            >
-              {" "}
-              {link.label}{" "}
-            </Link>
-          ))}{" "}
-        </div>
-      )}{" "}
+          {open ? <X size={22} /> : <Menu size={22} />}
+        </button>
+      </div>
+
+      {/* Mobile Menu */}
+      <div
+        className={clsx(
+          "fixed inset-0 z-40 flex flex-col justify-center gap-6 bg-red px-8 transition-all duration-500 md:hidden",
+          open
+            ? "pointer-events-auto opacity-100"
+            : "pointer-events-none opacity-0",
+        )}
+      >
+        {links.map((link) => (
+          <Link
+            key={link.label}
+            href={link.href}
+            onClick={() => setOpen(false)}
+            className={clsx(
+              "font-display text-5xl font-extrabold uppercase tracking-tight text-white transition-all duration-300",
+              link.active && "text-primary",
+            )}
+          >
+            {link.label}
+          </Link>
+        ))}
+
+        <Button
+          variant="primary"
+          href="/contact"
+          className="mt-6 w-full justify-center rounded-xl py-4 text-sm font-bold uppercase tracking-[0.12em]"
+        >
+          Get In Touch
+        </Button>
+      </div>
     </nav>
   );
 }

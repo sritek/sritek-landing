@@ -5,7 +5,7 @@ import Button from "@/components/ui/Button";
 
 export default function CTABanner() {
   return (
-    <section className="bg-red px-6 pb-12">
+    <section className="bg-red px-6 py-12 ">
       <div className="relative flex min-h-[420px] items-center justify-center overflow-hidden rounded-2xl bg-dark">
         <GridDotBackground />
         <div className="relative z-10 text-center">

@@ -23,6 +23,11 @@ const milestones = [
     title: "From Local to Global",
     body: "Today we collaborate with startups and companies across regions to create impactful digital products.",
   },
+  {
+    no: "04",
+    title: "Continuous Evolution",
+    body: "Today, Sritek is a dependable, trustworthy partner in custom software development. We create SaaS, web, mobile, and Al-driven products that grow alongside your business. Tomorrow, we guarantee the same - honest communication, careful design, and reliable software that works.",
+  },
 ];
 
 const pillars = [
@@ -46,15 +51,15 @@ const pillars = [
 
 const team = [
   {
-    name: "Shreyansh Soni",
+    name: "Yashaswi Soni",
     role: "CEO & Founder",
   },
   {
-    name: "Aditya Sharma",
+    name: "Shreyansh Soni",
     role: "Project Manager",
   },
   {
-    name: "Rohit Verma",
+    name: "Ankita Soni",
     role: "CTO",
   },
 ];
@@ -66,7 +71,7 @@ export default function AboutPage() {
       <section className="bg-red">
         <div className="section-container section-padding pb-10">
           <div className="max-w-[1400px]">
-            <h1 className="font-display text-[clamp(4rem,11vw,11rem)] leading-[0.88] font-extrabold uppercase tracking-[-0.06em] text-white">
+            <h1 className="font-display text-[clamp(4rem,11vw,11rem)] leading-[0.88] font-extrabold uppercase tracking-[-0.03em] text-white ">
               THE TEAM
               <br />
               BEHIND YOUR
@@ -101,7 +106,7 @@ export default function AboutPage() {
 
         {/* CURVE TRANSITION */}
         <div className="relative h-40 overflow-hidden">
-          <div className="absolute inset-x-[-10%] top-10 h-[220px]  bg-dark" />
+          <div className="absolute inset-x-[-10%s] top-10 h-[220px] rounded-[100%] bg-dark" />
         </div>
       </section>
 
@@ -126,7 +131,7 @@ export default function AboutPage() {
               <div key={m.no} className="relative">
                 <div className="absolute top-[152px] h-3 w-3 rounded-full bg-cream md:block" />
 
-                <p className="font-display text-[clamp(5rem,8vw,12rem)] leading-none font-extrabold tracking-[-0.05em] text-cream">
+                <p className="font-display text-[clamp(5rem,8vw,12rem)] leading-none font-extrabold tracking-[-0.05em] text-red">
                   {m.no}
                 </p>
 
@@ -207,7 +212,9 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
       <CTABanner />
+
       <Footer />
     </main>
   );
