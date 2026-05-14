@@ -112,7 +112,7 @@ export default function AboutPage() {
 
       {/* MILESTONES */}
       <section className="bg-dark py-28">
-        <div className="section-container">
+        <div className="px-12">
           <div className="mb-24 flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
             <div>
               <p className="text-sm uppercase tracking-[0.25em] text-white/60">
@@ -124,28 +124,34 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <div className="relative grid gap-20 md:grid-cols-3 md:gap-10">
-            <div className="absolute left-0 top-[158px] hidden h-px w-full bg-cream/30 md:block" />
+          <div className="overflow-x-auto overflow-y-hidden pb-8">
+            <div className="relative flex min-w-max gap-28 pr-20">
+              {/* Timeline line */}
+              <div className="absolute left-0 top-[158px] h-px w-full bg-cream/30" />
 
-            {milestones.map((m) => (
-              <div key={m.no} className="relative">
-                <div className="absolute top-[152px] h-3 w-3 rounded-full bg-cream md:block" />
+              {milestones.map((m) => (
+                <div key={m.no} className="relative w-[420px] flex-shrink-0">
+                  {/* Dot */}
+                  <div className="absolute top-[152px] h-3 w-3 rounded-full bg-cream" />
 
-                <p className="font-display text-[clamp(5rem,8vw,12rem)] leading-none font-extrabold tracking-[-0.05em] text-red">
-                  {m.no}
-                </p>
-
-                <div className="mt-10">
-                  <h3 className="font-display text-5xl font-extrabold uppercase leading-[0.95] text-white">
-                    {m.title}
-                  </h3>
-
-                  <p className="mt-6 max-w-sm text-base leading-8 text-white/70">
-                    {m.body}
+                  {/* Number */}
+                  <p className="font-display text-[clamp(5rem,8vw,12rem)] leading-none font-extrabold tracking-[-0.01em] text-red">
+                    {m.no}
                   </p>
+
+                  {/* Content */}
+                  <div className="mt-10">
+                    <h3 className="font-display text-5xl font-extrabold uppercase leading-[0.95] text-white">
+                      {m.title}
+                    </h3>
+
+                    <p className="mt-6 max-w-sm text-base leading-8 text-white/70">
+                      {m.body}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -189,6 +195,7 @@ export default function AboutPage() {
                 key={member.name}
                 className="group overflow-hidden rounded-[28px] bg-white"
               >
+                m
                 <div className="relative aspect-[0.9] overflow-hidden bg-neutral-800">
                   <Image
                     src={`/images/about/member-${i + 1}.jpg`}
@@ -197,7 +204,6 @@ export default function AboutPage() {
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>
-
                 <div className="space-y-2 p-7">
                   <h4 className="text-2xl font-semibold text-dark">
                     {member.name}
