@@ -31,7 +31,10 @@ const links = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
   const navRef = useRef<HTMLElement>(null);
+  const [langOpen, setLangOpen] = useState(false);
+  const langRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -72,6 +75,16 @@ export default function Navbar() {
     return () => ctx.revert();
   }, []);
 
+  useEffect(() => {
+    function handleDocClick(e: MouseEvent) {
+      if (langRef.current && !langRef.current.contains(e.target as Node)) {
+        setLangOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleDocClick);
+    return () => document.removeEventListener("mousedown", handleDocClick);
+  }, []);
+
   return (
     <nav
       ref={navRef}
@@ -99,9 +112,10 @@ export default function Navbar() {
             // SERVICES DROPDOWN
             if (link.dropdown) {
               return (
-                <div key={link.label} className="group relative">
+                <div key={link.label} className="relative">
                   <Link
                     href={link.href}
+                    onMouseEnter={() => setServicesOpen(true)}
                     className={clsx(
                       `
                       nav-link
@@ -123,15 +137,17 @@ export default function Navbar() {
 
                     <ChevronDown
                       size={14}
-                      className="
-                        transition-transform duration-300
-                        group-hover:rotate-180
-                      "
+                      className={clsx(
+                        "transition-transform duration-300",
+                        servicesOpen && "rotate-180",
+                      )}
                     />
                   </Link>
 
                   {/* DROPDOWN */}
                   <div
+                    onMouseEnter={() => setServicesOpen(true)}
+                    onMouseLeave={() => setServicesOpen(false)}
                     className="
     absolute left-0 top-full z-50
     pt-3
@@ -139,19 +155,18 @@ export default function Navbar() {
   "
                   >
                     <div
-                      className="
-      rounded-[18px]
-      bg-[#ffebeb]
-      p-2
-      shadow-2xl
-      opacity-0
-      translate-y-2
-      pointer-events-none
-      transition-all duration-300
-      group-hover:opacity-100
-      group-hover:translate-y-0
-      group-hover:pointer-events-auto
-    "
+                      className={clsx(
+                        `
+    rounded-[18px]
+    bg-[#ffebeb]
+    p-2
+    shadow-2xl
+    transition-all duration-300
+    `,
+                        servicesOpen
+                          ? "translate-y-0 opacity-100 pointer-events-auto"
+                          : "translate-y-2 opacity-0 pointer-events-none",
+                      )}
                     >
                       <div className="flex flex-col">
                         {link.items?.map((item) => (
@@ -209,7 +224,6 @@ export default function Navbar() {
         <Button
           className="
             hidden md:inline-flex
-            rounded-xl
             px-7
             text-[12px]
             font-bold
