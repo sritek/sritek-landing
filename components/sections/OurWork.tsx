@@ -5,14 +5,14 @@ export default function OurWork() {
   return (
     <section className="bg-red section-padding">
       <div className="section-container">
-        <h2 className="mb-12 font-display text-7xl font-extrabold text-white">
+        <h2 className="mb-12 font-display text-7xl font-extrabold text-cream">
           OUR WORK
         </h2>
         <div className="grid gap-6 md:grid-cols-2">
           {projects.map((project, index) => (
             <article
               key={project.id}
-              className={` ${index === 2 ? "md:col-span-2" : ""} group relative cursor-pointer overflow-hidden rounded-2xl border-2 border-transparent bg-white p-8 transition-all duration-200 hover:scale-[1.02] hover:border-black`}
+              className={` ${index === 2 ? "md:col-span-2" : ""} group relative cursor-pointer overflow-hidden rounded-2xl border-2 border-transparent bg-cream p-8 transition-all duration-200 hover:scale-[1.02] hover:border-black`}
             >
               <p className="text-xs uppercase tracking-widest text-red">
                 {project.category}

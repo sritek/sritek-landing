@@ -19,7 +19,7 @@ export default function LoadingScreen({
     <>
       {children}
       {showSplash && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-dark text-white">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-dark text-cream">
           <Image
             src="/logo.svg"
             alt="Sritek logo"

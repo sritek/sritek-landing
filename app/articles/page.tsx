@@ -13,7 +13,7 @@ export default function ArticlesPage() {
   return (
     <main className="bg-dark pb-20 pt-[120px]">
       <section className="section-container">
-        <h1 className="font-display text-7xl font-extrabold text-white">
+        <h1 className="font-display text-7xl font-extrabold text-cream">
           ARTICLES
         </h1>
         <div className="mt-10 space-y-4">
@@ -21,7 +21,7 @@ export default function ArticlesPage() {
             <Link
               key={a.slug}
               href={`/articles/${a.slug}`}
-              className="block rounded-xl border border-white/15 p-6 text-xl text-white"
+              className="block rounded-xl border border-cream/15 p-6 text-xl text-cream"
             >
               {a.title}
             </Link>

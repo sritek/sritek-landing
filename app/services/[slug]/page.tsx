@@ -10,13 +10,13 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
     <main className="pt-[72px]">
       <section className="bg-red section-padding">
         <div className="section-container">
-          <p className="text-xs uppercase tracking-widest text-white/70">
+          <p className="text-xs uppercase tracking-widest text-cream/70">
             Service / {service.id}
           </p>
-          <h1 className="mt-2 whitespace-pre-line font-display text-7xl font-extrabold text-white">
+          <h1 className="mt-2 creamspace-pre-line font-display text-7xl font-extrabold text-cream">
             {service.title}
           </h1>
-          <p className="mt-6 max-w-3xl text-white/85">
+          <p className="mt-6 max-w-3xl text-cream/85">
             We design and build this service from strategy to production-grade
             delivery.
           </p>

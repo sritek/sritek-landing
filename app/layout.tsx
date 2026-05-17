@@ -52,7 +52,11 @@ export default function RootLayout({
     },
   };
   return (
-    <html lang="en" className={`${barlow.variable} ${dmSans.variable}`}>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${barlow.variable} ${dmSans.variable}`}
+    >
       <body>
         <LoadingScreen>
           <LenisProvider>

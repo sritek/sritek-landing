@@ -89,7 +89,7 @@ export default function ProcessSection() {
                 <h2 className="mt-4 font-display text-[clamp(2.5rem,6vw,5rem)] font-extrabold leading-tight text-cream uppercase">
                   {step.title}
                 </h2>
-                <div className="mt-8 max-w-md rounded-2xl bg-white p-8 text-dark shadow-2xl">
+                <div className="mt-8 max-w-md rounded-2xl bg-cream p-8 text-dark shadow-2xl">
                   <p className="text-lg font-medium leading-relaxed">
                     {step.description}
                   </p>

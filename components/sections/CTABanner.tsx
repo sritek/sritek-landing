@@ -16,7 +16,7 @@ export default function CTABanner() {
             Get In Touch
           </Button>
         </div>
-        <div className="absolute right-8 top-3/4 max-w-[280px] -translate-y-1/2 rounded-2xl bg-white p-6 text-dark">
+        <div className="absolute right-8 top-3/4 max-w-[280px] -translate-y-1/2 rounded-2xl bg-cream p-6 text-dark">
           Ready to bring your ideas to life? We&apos;re here to help.
         </div>
       </div>

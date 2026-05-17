@@ -8,10 +8,10 @@ export default function ArticleDetailPage({
   return (
     <main className="bg-dark pb-20 pt-[120px]">
       <article className="section-container">
-        <h1 className="font-display text-6xl font-extrabold text-white">
+        <h1 className="font-display text-6xl font-extrabold text-cream">
           {params.slug.replaceAll("-", " ").toUpperCase()}
         </h1>
-        <p className="mt-6 max-w-3xl text-white/80">
+        <p className="mt-6 max-w-3xl text-cream/80">
           Article content placeholder. Replace with MDX content later.
         </p>
       </article>

@@ -26,7 +26,7 @@ export default function GridDotBackground() {
       {squares.map((s, i) => (
         <div
           key={i}
-          className="absolute h-3 w-3 border border-white/20 flex items-center justify-center"
+          className="absolute h-3 w-3 border border-cream/20 flex items-center justify-center"
           style={{
             top: s.top,
             left: s.left,
@@ -34,7 +34,7 @@ export default function GridDotBackground() {
         >
           {/* Internal Glow Pulse */}
           <div
-            className="h-full w-full bg-white/10 animate-pulse"
+            className="h-full w-full bg-cream/10 animate-pulse"
             style={{
               animationDelay: s.delay,
               animationDuration: s.duration,
@@ -43,7 +43,7 @@ export default function GridDotBackground() {
 
           {/* Floating 'Crosshair' Corners (Optional Detail) */}
           <div className="absolute -inset-[1px] border-t border-l border-cream/40 w-1 h-1" />
-          {/* <div className="absolute -bottom-[2px] -right-[2px] border-b border-right border-white/40 w-1 h-1" /> */}
+          {/* <div className="absolute -bottom-[2px] -right-[2px] border-b border-right border-cream/40 w-1 h-1" /> */}
           <div className="absolute inset-[7px] border-b border-r border-cream/40 w-1 h-1" />
         </div>
       ))}
@@ -53,7 +53,7 @@ export default function GridDotBackground() {
         className="absolute inset-0 opacity-[0.03]"
         style={{
           backgroundImage:
-            "linear-gradient(to bottom, transparent 50%, white 50%)",
+            "linear-gradient(to bottom, transparent 50%, cream 50%)",
           backgroundSize: "100% 4px",
         }}
       />

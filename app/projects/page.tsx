@@ -12,18 +12,18 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   return (
-    <main className="overflow-hidden bg-dark text-white">
+    <main className="overflow-hidden bg-dark text-cream">
       {/* HERO */}
       <section className="relative bg-red">
         <div className="section-container section-padding pb-16 h-[70vh]">
           <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
             <div>
-              <h1 className="font-display text-[clamp(5rem,12vw,12rem)] leading-[0.85] font-extrabold uppercase tracking-[-0.03em] text-white">
+              <h1 className="font-display text-[clamp(5rem,12vw,12rem)] leading-[0.85] font-extrabold uppercase tracking-[-0.03em] text-cream">
                 PROJECTS
               </h1>
             </div>
 
-            <p className="absolute right-5 bottom-40 max-w-[620px] text-base leading-[1.9] text-white/80 sm:text-lg">
+            <p className="absolute right-5 bottom-40 max-w-[620px] text-base leading-[1.9] text-cream/80 sm:text-lg">
               Our portfolio highlights a diverse collection of projects that
               demonstrate innovative solutions and successful outcomes across
               various industries. Each case study showcases our approach to
@@ -52,7 +52,7 @@ export default function ProjectsPage() {
           {projects[0] && (
             <Link
               href={`/projects/${projects[0].slug}`}
-              className=" relative group mb-8 block overflow-hidden rounded-[28px] border border-white/10 bg-dark transition-all duration-200 hover:shadow-[-5px_5px_0px_0px_#9a0002]"
+              className=" relative group mb-8 block overflow-hidden rounded-[28px] border border-cream/10 bg-dark transition-all duration-200 hover:shadow-[-5px_5px_0px_0px_#9a0002]"
             >
               <div className="relative aspect-[16/8] overflow-hidden">
                 <Image
@@ -63,7 +63,7 @@ export default function ProjectsPage() {
                 />
               </div>
 
-              <div className="border-t border-white/10 p-7 bg-red">
+              <div className="border-t border-cream/10 p-7 bg-red">
                 <p className="text-xs font-semibold uppercase tracking-[0.24em] text-cream/40">
                   {projects[0].category}
                 </p>
@@ -84,7 +84,7 @@ export default function ProjectsPage() {
               <Link
                 key={project.slug}
                 href={`/projects/${project.slug}`}
-                className="group overflow-hidden rounded-[24px] border border-white/10 bg-dark transition-all  hover:-translate-y-1 duration-200 hover:shadow-[-5px_5px_0px_0px_#9a0002]"
+                className="relative group overflow-hidden rounded-[24px] border border-cream/10 bg-dark transition-all  hover:-translate-y-1 duration-200 hover:shadow-[-5px_5px_0px_0px_#9a0002]"
               >
                 {/* IMAGE */}
                 <div className="relative aspect-[16/11] overflow-hidden">
@@ -97,7 +97,7 @@ export default function ProjectsPage() {
                 </div>
 
                 {/* CONTENT */}
-                <div className="border-t border-white/10 p-6 bg-red">
+                <div className="border-t border-cream/10 p-6 bg-red">
                   <p className="text-xs font-semibold uppercase tracking-[0.22em] text-cream/40">
                     {project.category}
                   </p>

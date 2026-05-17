@@ -41,7 +41,7 @@ export default function HeroSection() {
               </span>
             ))}
           </h1>
-          <p className="hero-sub mt-14 max-w-[300px] text-white/90">
+          <p className="hero-sub mt-14 max-w-[300px] text-cream/90">
             Stop wasting your time. We ship your SaaS 3x faster with
             production-grade quality.
           </p>

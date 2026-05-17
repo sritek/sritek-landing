@@ -49,7 +49,7 @@ export default function PageProgress() {
             strokeDashoffset={2 * Math.PI * 28}
           />
         </svg>
-        <span className="text-xs font-bold text-white">{percent}%</span>
+        <span className="text-xs font-bold text-cream">{percent}%</span>
       </div>
     </div>
   );

@@ -19,12 +19,12 @@ export default function TrustedBy() {
           {clients.map((client) => (
             <div
               key={client.name}
-              className="flex items-center justify-between border-b border-white/10 py-4"
+              className="flex items-center justify-between border-b border-cream/10 py-4"
             >
-              <p className="font-display text-2xl font-bold text-white">
+              <p className="font-display text-2xl font-bold text-cream">
                 → {client.name}
               </p>
-              <p className="text-sm text-white/60">{client.service}</p>
+              <p className="text-sm text-cream/60">{client.service}</p>
             </div>
           ))}
         </div>

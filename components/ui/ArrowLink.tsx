@@ -10,7 +10,7 @@ export default function ArrowLink({
   return (
     <Link
       href={href}
-      className="inline-flex items-center gap-2 text-sm font-medium uppercase tracking-widest text-white hover:text-cream"
+      className="inline-flex items-center gap-2 text-sm font-medium uppercase tracking-widest text-cream hover:text-cream"
     >
       <span>→</span>
       <span>{children}</span>

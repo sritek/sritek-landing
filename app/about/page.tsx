@@ -190,7 +190,7 @@ export default function AboutPage() {
       {/* TEAM */}
       <section className="bg-dark py-28">
         <div className="section-container">
-          <h2 className="font-display text-[clamp(4rem,8vw,8rem)] font-extrabold uppercase leading-none tracking-[-0.05em] text-cream">
+          <h2 className="font-display text-[clamp(4rem,8vw,8rem)] font-extrabold uppercase leading-none tracking-[-0.03em] text-cream">
             THE TEAM
           </h2>
 

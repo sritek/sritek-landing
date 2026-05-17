@@ -135,8 +135,8 @@ export default function Navbar() {
                       transition-all duration-300
                       `,
                       isActive
-                        ? "bg-black text-white"
-                        : "text-white/90 hover:bg-black/20 hover:text-white",
+                        ? "bg-black text-cream"
+                        : "text-cream/90 hover:bg-black/20 hover:text-cream",
                     )}
                   >
                     {link.label}
@@ -201,7 +201,7 @@ export default function Navbar() {
                               uppercase
                               text-black
                               transition-all duration-200
-                              hover:bg-white/60
+                              hover:bg-cream/60
                             "
                           >
                             {item}
@@ -230,8 +230,8 @@ export default function Navbar() {
                   transition-all duration-300
                   `,
                   isActive
-                    ? "bg-black text-white"
-                    : "text-white/90 hover:bg-black/20 hover:text-white",
+                    ? "bg-black text-cream"
+                    : "text-cream/90 hover:bg-black/20 hover:text-cream",
                 )}
               >
                 {link.label}
@@ -251,7 +251,7 @@ export default function Navbar() {
 
         {/* Mobile Toggle */}
         <button
-          className="flex h-11 w-11 items-center justify-center rounded-lg text-white transition hover:bg-white/10 md:hidden"
+          className="flex h-11 w-11 items-center justify-center rounded-lg text-cream transition hover:bg-cream/10 md:hidden"
           onClick={() => setOpen((v) => !v)}
           aria-label="Menu"
         >
@@ -285,7 +285,7 @@ export default function Navbar() {
               font-extrabold
               uppercase
               tracking-tight
-              text-white
+              text-cream
               transition-all duration-300
               `,
               pathname === link.href && "text-primary",

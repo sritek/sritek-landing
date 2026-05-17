@@ -46,14 +46,14 @@ export default function Footer() {
               {c.title}
             </h4>
             {c.items.map((i) => (
-              <p key={i} className="mb-2 text-sm text-white/80">
+              <p key={i} className="mb-2 text-sm text-cream/80">
                 {i}
               </p>
             ))}
           </div>
         ))}
       </div>
-      <div className="border-t border-white/10 px-12 py-6 text-xs text-white/40">
+      <div className="border-t border-cream/10 px-12 py-6 text-xs text-cream/40">
         © 2026 SRITEK
       </div>
       <div className="watermark select-none text-center font-display text-[clamp(12rem,40vw,32rem)]  font-extrabold leading-[0.85] text-red">

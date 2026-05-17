@@ -17,7 +17,7 @@ export default function WhoWeAre() {
           <h2 className="font-display text-6xl font-extrabold text-cream">
             WHO WE ARE
           </h2>
-          <p className="mt-6 max-w-md text-lg text-white/85">
+          <p className="mt-6 max-w-md text-lg text-cream/85">
             Sritek is a talented team of developers, UI/UX designers, and
             project managers creating custom software, SaaS and AI that scales
             your business.
