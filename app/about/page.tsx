@@ -83,7 +83,7 @@ export default function AboutPage() {
           <div className="mt-12 overflow-hidden rounded-[24px] border border-white/10">
             <div className="relative aspect-[16/8] w-full">
               <Image
-                src="/images/about/team.jpg"
+                src="/team2.jpeg"
                 alt="Team"
                 fill
                 className="object-cover"
@@ -104,9 +104,14 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* CURVE TRANSITION */}
-        <div className="relative h-40 overflow-hidden">
-          <div className="absolute inset-x-[-10%s] top-10 h-[220px] rounded-[100%] bg-dark" />
+        {/* CURVE */}
+        <div className="relative h-28 overflow-hidden bg-red">
+          <div
+            className="absolute inset-0 bg-dark"
+            style={{
+              clipPath: "polygon(0 100%, 100% 35%, 100% 100%, 0 100%)",
+            }}
+          />
         </div>
       </section>
 
@@ -196,9 +201,9 @@ export default function AboutPage() {
                 className="group overflow-hidden rounded-[28px] bg-white"
               >
                 m
-                <div className="relative aspect-[0.9] overflow-hidden bg-neutral-800">
+                <div className="relative aspect-[0.6] overflow-hidden bg-neutral-800">
                   <Image
-                    src={`/images/about/member-${i + 1}.jpg`}
+                    src={`/images/about/member-${i + 1}.jpeg`}
                     alt={member.name}
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
