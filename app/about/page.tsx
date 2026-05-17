@@ -81,9 +81,9 @@ export default function AboutPage() {
           </div>
 
           <div className="mt-12 overflow-hidden rounded-[24px] border border-white/10">
-            <div className="relative aspect-[16/8] w-full">
+            <div className="relative aspect-[3/2] w-full">
               <Image
-                src="/team2.jpeg"
+                src="/images/about/team.png"
                 alt="Team"
                 fill
                 className="object-cover"

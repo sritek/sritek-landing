@@ -135,8 +135,8 @@ export default function Navbar() {
                       transition-all duration-300
                       `,
                       isActive
-                        ? "bg-black text-cream"
-                        : "text-cream/90 hover:bg-black/20 hover:text-cream",
+                        ? "bg-dark text-cream"
+                        : "text-cream/90 hover:bg-dark/20 hover:text-cream",
                     )}
                   >
                     {link.label}
@@ -197,9 +197,9 @@ export default function Navbar() {
                               px-5 py-4
                               text-left
                               text-[12px]
-                              font-black
+                              font-dark
                               uppercase
-                              text-black
+                              text-dark
                               transition-all duration-200
                               hover:bg-cream/60
                             "
@@ -230,8 +230,8 @@ export default function Navbar() {
                   transition-all duration-300
                   `,
                   isActive
-                    ? "bg-black text-cream"
-                    : "text-cream/90 hover:bg-black/20 hover:text-cream",
+                    ? "bg-dark text-cream"
+                    : "text-cream/90 hover:bg-dark/20 hover:text-cream",
                 )}
               >
                 {link.label}

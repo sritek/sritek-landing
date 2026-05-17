@@ -59,7 +59,7 @@ export const projects = [
     results2:
       "Teams were able to access actionable business insights faster while executives gained real-time operational visibility through AI-generated reports.",
 
-    youtubeId: "dQw4w9WgXcQ",
+    youtubeId: "Onb6_bRJ0Bw",
 
     stats: [
       {
@@ -137,7 +137,7 @@ export const projects = [
     results2:
       "Customers received faster approvals while insurance teams processed higher volumes with reduced manual effort.",
 
-    youtubeId: "dQw4w9WgXcQ",
+    youtubeId: "UIPXHsUXVH0",
 
     stats: [
       {

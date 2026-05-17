@@ -7,7 +7,7 @@ export default function ServicesGrid() {
         {services.map((service) => (
           <article
             key={service.id}
-            className="group relative cursor-pointer overflow-hidden rounded-2xl border-2 border-transparent bg-cream p-8 transition-all duration-200 hover:scale-[1.02] hover:border-black"
+            className="group relative cursor-pointer overflow-hidden rounded-2xl border-2 border-transparent bg-cream p-8 transition-all duration-200 hover:scale-[1.02] hover:border-dark"
           >
             <p className="mb-4 text-xs font-medium uppercase tracking-widest text-red">
               Service / {service.id}

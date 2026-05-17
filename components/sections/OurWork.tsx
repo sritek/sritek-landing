@@ -1,5 +1,7 @@
 import Button from "@/components/ui/Button";
 import { projects } from "@/lib/data/projects";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function OurWork() {
   return (
@@ -10,9 +12,10 @@ export default function OurWork() {
         </h2>
         <div className="grid gap-6 md:grid-cols-2">
           {projects.map((project, index) => (
-            <article
-              key={project.id}
-              className={` ${index === 2 ? "md:col-span-2" : ""} group relative cursor-pointer overflow-hidden rounded-2xl border-2 border-transparent bg-cream p-8 transition-all duration-200 hover:scale-[1.02] hover:border-black`}
+            <Link
+              key={project.slug}
+              href={`/projects/${project.slug}`}
+              className={` ${index === 2 ? "md:col-span-2" : ""} group relative cursor-pointer overflow-hidden rounded-2xl border-2 border-transparent bg-cream p-8 transition-all duration-200 hover:scale-[1.02] hover:border-dark`}
             >
               <p className="text-xs uppercase tracking-widest text-red">
                 {project.category}
@@ -21,15 +24,25 @@ export default function OurWork() {
                 {project.title}
               </h3>
               <p className="mt-4 text-sm text-dark/70">{project.description}</p>
-              <div className="mt-6 h-40 rounded-xl bg-gray-100" />
+              <div className="relative mt-6 h-80 overflow-hidden rounded-xl bg-gray-100">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                />
+              </div>
+              s
               <span className="absolute right-6 top-6 inline-flex h-10 w-10 items-center justify-center rounded-sm bg-red text-cream opacity-0 transition group-hover:opacity-100">
                 →
               </span>
-            </article>
+            </Link>
           ))}
         </div>
         <div className="mt-10 text-center">
-          <Button variant="primary">Show More</Button>
+          <Button variant="primary" href="projects">
+            Show More
+          </Button>
         </div>
       </div>
     </section>

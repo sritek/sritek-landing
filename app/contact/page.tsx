@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Footer from "@/components/layout/Footer";
 import Button from "@/components/ui/Button";
+import Image from "next/image";
 
 export const metadata: Metadata = { title: "Contact Us" };
 
@@ -75,7 +76,7 @@ export default function ContactPage() {
             <div className="flex items-center justify-between rounded-2xl border border-cream/10 bg-dark-deep px-8 py-5">
               <div className="flex items-center gap-4">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full border border-cream/10 bg-red/20 text-base font-bold text-cream">
-                  S
+                  <Image src="/contact.jpeg" alt="S" width={100} height={100} />
                 </div>
                 <div>
                   <p className="font-semibold text-cream">Yashaswi</p>
