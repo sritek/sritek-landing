@@ -26,16 +26,38 @@ const links = [
   { label: "PROJECTS", href: "/projects" },
   { label: "ABOUT", href: "/about" },
   { label: "ARTICLES", href: "/articles" },
-  { label: "EN", href: "#" },
+  {
+    label: "EN",
+    href: "#",
+    dropdown: true,
+    items: ["EN", "HI"],
+  },
 ];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
+  // FIX 1: Single state tracks WHICH dropdown is open by label, not two booleans.
+  // Previously both SERVICES and EN shared `servicesOpen`, so they'd open together.
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const navRef = useRef<HTMLElement>(null);
-  const [langOpen, setLangOpen] = useState(false);
-  const langRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
+
+  // FIX 2: Debounced close so the gap between the trigger link and the dropdown
+  // panel (previously caused by `pt-3` dead space) doesn't fire a spurious close.
+  const scheduleClose = () => {
+    closeTimer.current = setTimeout(() => setOpenDropdown(null), 120);
+  };
+  const cancelClose = (label: string) => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setOpenDropdown(label);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (closeTimer.current) clearTimeout(closeTimer.current);
+    };
+  }, []);
 
   useEffect(() => {
     if (!navRef.current) return;
@@ -43,24 +65,13 @@ export default function Navbar() {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         ".nav-shell",
-        {
-          y: -80,
-          opacity: 0,
-        },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.7,
-          ease: "power3.out",
-        },
+        { y: -80, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.7, ease: "power3.out" },
       );
 
       gsap.fromTo(
         ".nav-link",
-        {
-          y: -10,
-          opacity: 0,
-        },
+        { y: -10, opacity: 0 },
         {
           y: 0,
           opacity: 1,
@@ -73,16 +84,6 @@ export default function Navbar() {
     }, navRef);
 
     return () => ctx.revert();
-  }, []);
-
-  useEffect(() => {
-    function handleDocClick(e: MouseEvent) {
-      if (langRef.current && !langRef.current.contains(e.target as Node)) {
-        setLangOpen(false);
-      }
-    }
-    document.addEventListener("mousedown", handleDocClick);
-    return () => document.removeEventListener("mousedown", handleDocClick);
   }, []);
 
   return (
@@ -108,20 +109,25 @@ export default function Navbar() {
         <div className="hidden items-center gap-3 md:flex">
           {links.map((link) => {
             const isActive = pathname === link.href;
+            const isOpen = openDropdown === link.label;
 
-            // SERVICES DROPDOWN
             if (link.dropdown) {
               return (
+                // Outer wrapper: no mouse handlers here — it has no visual size
+                // of its own, but its absolute child would still catch stray events
+                // and bubble them up if we put handlers here.
                 <div key={link.label} className="relative">
+                  {/* Trigger — opens on enter, starts close timer on leave */}
                   <Link
                     href={link.href}
-                    onMouseEnter={() => setServicesOpen(true)}
+                    onMouseEnter={() => cancelClose(link.label)}
+                    onMouseLeave={scheduleClose}
                     className={clsx(
                       `
                       nav-link
                       flex items-center gap-2
                       rounded-[10px]
-                      px-5 py-2
+                      px-5 py-3
                       text-[12px]
                       font-bold
                       uppercase
@@ -134,38 +140,52 @@ export default function Navbar() {
                     )}
                   >
                     {link.label}
-
                     <ChevronDown
                       size={14}
                       className={clsx(
                         "transition-transform duration-300",
-                        servicesOpen && "rotate-180",
+                        isOpen && "rotate-180",
                       )}
                     />
                   </Link>
 
-                  {/* DROPDOWN */}
+                  {/*
+                    Dropdown container.
+
+                    KEY FIX: the outer absolute div is always in the DOM, so even
+                    when invisible it occupies a 300 px-wide hit area below the
+                    trigger. Any stray hover over that area bubbled mouseenter up
+                    and opened the dropdown.
+
+                    Solution — two things together:
+                    1. pointer-events-none on THIS container when closed, so the
+                       invisible div can never catch or bubble mouse events.
+                    2. Mouse handlers live here (not on the parent relative div),
+                       so only intentional hovering over the trigger or the open
+                       panel keeps it open.
+                  */}
                   <div
-                    onMouseEnter={() => setServicesOpen(true)}
-                    onMouseLeave={() => setServicesOpen(false)}
-                    className="
-    absolute left-0 top-full z-50
-    pt-3
-    w-[300px]
-  "
+                    aria-hidden={!isOpen}
+                    onMouseEnter={() => cancelClose(link.label)}
+                    onMouseLeave={scheduleClose}
+                    className={clsx(
+                      "absolute left-0 top-full z-50 w-[300px] pt-3",
+                      // When closed, no pointer events at all — invisible to the mouse
+                      isOpen ? "pointer-events-auto" : "pointer-events-none",
+                    )}
                   >
                     <div
                       className={clsx(
                         `
-    rounded-[18px]
-    bg-[#ffebeb]
-    p-2
-    shadow-2xl
-    transition-all duration-300
-    `,
-                        servicesOpen
-                          ? "translate-y-0 opacity-100 pointer-events-auto"
-                          : "translate-y-2 opacity-0 pointer-events-none",
+                        rounded-[18px]
+                        bg-[#ffebeb]
+                        p-2
+                        shadow-2xl
+                        transition-all duration-300
+                        `,
+                        isOpen
+                          ? "translate-y-0 opacity-100"
+                          : "translate-y-2 opacity-0",
                       )}
                     >
                       <div className="flex flex-col">
@@ -173,16 +193,16 @@ export default function Navbar() {
                           <button
                             key={item}
                             className="
-            rounded-xl
-            px-5 py-4
-            text-left
-            text-[12px]
-            font-black
-            uppercase
-            text-black
-            transition-all duration-200
-            hover:bg-white/60
-          "
+                              rounded-xl
+                              px-5 py-4
+                              text-left
+                              text-[12px]
+                              font-black
+                              uppercase
+                              text-black
+                              transition-all duration-200
+                              hover:bg-white/60
+                            "
                           >
                             {item}
                           </button>
@@ -222,14 +242,7 @@ export default function Navbar() {
 
         {/* CTA */}
         <Button
-          className="
-            hidden md:inline-flex
-            px-7
-            text-[12px]
-            font-bold
-            uppercase
-            tracking-[0.12em]
-          "
+          className="hidden md:inline-flex px-7 text-[12px] font-bold uppercase tracking-[0.12em]"
           variant="primary"
           href="/contact"
         >
@@ -238,11 +251,7 @@ export default function Navbar() {
 
         {/* Mobile Toggle */}
         <button
-          className="
-            flex h-11 w-11 items-center justify-center
-            rounded-lg text-white transition
-            hover:bg-white/10 md:hidden
-          "
+          className="flex h-11 w-11 items-center justify-center rounded-lg text-white transition hover:bg-white/10 md:hidden"
           onClick={() => setOpen((v) => !v)}
           aria-label="Menu"
         >
@@ -289,13 +298,7 @@ export default function Navbar() {
         <Button
           variant="primary"
           href="/contact"
-          className="
-            mt-6
-            w-full justify-center
-            rounded-xl py-4
-            text-sm font-bold uppercase
-            tracking-[0.12em]
-          "
+          className="mt-6 w-full justify-center rounded-xl py-4 text-sm font-bold uppercase tracking-[0.12em]"
         >
           Get In Touch
         </Button>
