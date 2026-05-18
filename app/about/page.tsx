@@ -91,17 +91,13 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <div className="mt-20 grid gap-10 md:grid-cols-2">
-            <div />
-
-            <p className="max-w-[620px] text-lg leading-[1.9] text-white/80 md:text-xl">
-              Our talented team of developers, UI/UX designers, and project
-              managers is passionate about building efficient, scalable, and
-              visually refined digital products. We specialize in web apps,
-              mobile experiences, SaaS platforms, and AI-powered systems —
-              always focused on fast execution and impactful results.
-            </p>
-          </div>
+          <p className="max-w-[620px] text-lg leading-[1.9] text-white/90 md:text-xl relative right-0">
+            Our talented team of developers, UI/UX designers, and project
+            managers is passionate about building efficient, scalable, and
+            visually refined digital products. We specialize in web apps, mobile
+            experiences, SaaS platforms, and AI-powered systems — always focused
+            on fast execution and impactful results.
+          </p>
         </div>
 
         {/* CURVE */}

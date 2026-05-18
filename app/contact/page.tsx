@@ -75,8 +75,14 @@ export default function ContactPage() {
             {/* Booking card — full width horizontal strip */}
             <div className="flex items-center justify-between rounded-2xl border border-cream/10 bg-dark-deep px-8 py-5">
               <div className="flex items-center gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-cream/10 bg-red/20 text-base font-bold text-cream">
-                  <Image src="/contact.jpeg" alt="S" width={100} height={100} />
+                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-cream/10">
+                  <Image
+                    src="/contact.png"
+                    alt="S"
+                    width={100}
+                    height={100}
+                    className="rounded-full w-full h-full object-cover"
+                  />
                 </div>
                 <div>
                   <p className="font-semibold text-cream">Yashaswi</p>
