@@ -60,7 +60,6 @@ export default function ProcessSection() {
             // Increase end value slightly for 4 slides so the scroll doesn't feel too fast
             end: `+=${totalSlides * 800}`,
             invalidateOnRefresh: true,
-            antialias: true,
           },
         },
       );
